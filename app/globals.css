@@ -1,26 +1,212 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  vertical-align: baseline;
+}
+* {
+  box-sizing: border-box;
+}
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  height: 100%;
+  font-size: 10px;
+  color: var(--black);
+
+  /* color */
+  --bg-main: #f1f0ea;
+  --black: #1d1e23;
+  --gray1: #dde7e7;
+  --gray2: #a4aaa7;
+  --gray3: #616264;
+  --primary: #72c6a5;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.bg-main {
+  background-color: var(--bg-main);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@utility h1 {
+  @apply font-semibold text-[3.2rem] leading-[4rem] tracking-[-0.025em];
+}
+@utility h2 {
+  @apply font-semibold text-[2.8rem] leading-[3.6rem] tracking-[-0.025em];
+}
+@utility h3 {
+  @apply font-semibold text-[2.2rem] leading-[2.8rem] tracking-[-0.025em];
+}
+@utility body1 {
+  @apply font-medium text-[1.8rem] leading-[2.4rem] tracking-[-0.025em];
+}
+@utility body2 {
+  @apply font-medium text-[1.6rem] leading-[2rem] tracking-[-0.025em];
+}
+@utility body3 {
+  @apply font-normal  text-[1.6rem] leading-[2.56rem] tracking-[-0.025em];
+}
+@utility btn1 {
+  @apply font-semibold text-[1.8rem] leading-[2.4rem] tracking-[0em];
+}
+@utility btn2 {
+  @apply font-semibold text-[1.6rem] leading-[2rem] tracking-[0em];
+}
+@utility caption {
+  @apply font-medium text-[1.4rem] leading-[1.8rem] tracking-[-0.025em];
 }
 
+h1 {
+  @apply h1;
+}
+h2 {
+  @apply h2;
+}
+h3 {
+  @apply h3;
+}
+
+.scrollbar-hidden {
+  -ms-overflow-style: none; /* Internet Explorer and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, and Opera */
+}
+
+html,
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+body {
+  position: relative;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+}
+input:focus {
+  outline: none;
+}
+input[type='radio'] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+textarea {
+  resize: none;
+  border: 1px solid var(--gray2);
+  background-color: white;
+  padding: 1.6rem;
+  border-radius: 1.2rem;
+}
+textarea:focus {
+  outline: none;
+  border: 1px solid var(--black);
+}
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
