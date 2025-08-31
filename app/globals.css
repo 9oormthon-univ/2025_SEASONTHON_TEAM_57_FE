@@ -92,12 +92,14 @@ video {
   color: var(--black);
 
   /* color */
-  --bg-main: #f1f0ea;
-  --black: #1d1e23;
-  --gray1: #dde7e7;
-  --gray2: #a4aaa7;
-  --gray3: #616264;
-  --primary: #72c6a5;
+  --bg-main: #f6f6f6;
+  --black: #111;
+  --gray1: #e8e8ee;
+  --gray2: #cdced6;
+  --gray3: #8c8f9f;
+  --gray4: #4e4e4e;
+  --primary: #ff7052;
+  --secondary: #2f61d5;
 }
 
 .bg-main {
@@ -105,31 +107,31 @@ video {
 }
 
 @utility h1 {
-  @apply font-semibold text-[3.2rem] leading-[4rem] tracking-[-0.025em];
-}
-@utility h2 {
   @apply font-semibold text-[2.8rem] leading-[3.6rem] tracking-[-0.025em];
 }
+@utility h2 {
+  @apply font-semibold text-[2.4rem] leading-[2.8rem] tracking-[-0.025em];
+}
 @utility h3 {
-  @apply font-semibold text-[2.2rem] leading-[2.8rem] tracking-[-0.025em];
+  @apply font-semibold text-[1.8rem] leading-[2.4rem] tracking-[-0.025em];
 }
 @utility body1 {
-  @apply font-medium text-[1.8rem] leading-[2.4rem] tracking-[-0.025em];
+  @apply font-semibold text-[1.6rem] leading-[150%] tracking-[-0.025em];
 }
 @utility body2 {
-  @apply font-medium text-[1.6rem] leading-[2rem] tracking-[-0.025em];
+  @apply font-normal text-[1.6rem] leading-[150%] tracking-[-0.025em];
 }
 @utility body3 {
-  @apply font-normal  text-[1.6rem] leading-[2.56rem] tracking-[-0.025em];
+  @apply font-normal text-[1.4rem] leading-[140%] tracking-[-0.025em];
 }
 @utility btn1 {
-  @apply font-semibold text-[1.8rem] leading-[2.4rem] tracking-[0em];
+  @apply font-semibold text-[1.6rem] leading-[2.4rem] tracking-[0em];
 }
 @utility btn2 {
-  @apply font-semibold text-[1.6rem] leading-[2rem] tracking-[0em];
+  @apply font-semibold text-[1.4rem] leading-[2rem] tracking-[0em];
 }
 @utility caption {
-  @apply font-medium text-[1.4rem] leading-[1.8rem] tracking-[-0.025em];
+  @apply font-normal text-[1.2rem] leading-[1.6rem] tracking-[-0.025em];
 }
 
 h1 {

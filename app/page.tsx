@@ -6,7 +6,6 @@ export default function Home() {
   return (
     <div>
       <span>Main Page</span>
-
       <NextJS />
     </div>
   );
