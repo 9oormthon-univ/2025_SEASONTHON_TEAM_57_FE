@@ -102,7 +102,7 @@ video {
   --secondary: #2f61d5;
 }
 
-.bg-main {
+@utility bg-main {
   background-color: var(--bg-main);
 }
 
