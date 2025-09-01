@@ -98,8 +98,17 @@ video {
   --gray2: #cdced6;
   --gray3: #8c8f9f;
   --gray4: #4e4e4e;
+  /*0% fff 7%. 100% fff 100% 선형*/
+  --whiteGradient: linear-gradient(180deg, rgba(255, 255, 255, 0.07) 0%, #fff 100%);
   --primary: #ff7052;
   --secondary: #2f61d5;
+}
+
+@utility shadow-box {
+  background: var(--whiteGradient);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.06);
+  border: 1px solid var(--White, #fff);
+  border-radius: 16px;
 }
 
 @utility bg-main {
