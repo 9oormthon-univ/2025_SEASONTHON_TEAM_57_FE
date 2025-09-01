@@ -20,6 +20,7 @@ export default function Home() {
       >
         임시 재능교환소 페이지로 /skill
       </Link>
+      <NextJS />
     </div>
   );
 }
