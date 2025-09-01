@@ -7,18 +7,16 @@ export default function Home() {
   return (
     <div className="h1">
       <p>Main Page</p>
-      <Link
-        className="text-blue-500"
-        href="/challenge"
-      >
+      <Link className="text-blue-500" href="/challenge">
         임시 챌린지 페이지로 /challenge
       </Link>
       <br />
-      <Link
-        className="text-blue-500"
-        href="/skill"
-      >
+      <Link className="text-blue-500" href="/skill">
         임시 재능교환소 페이지로 /skill
+      </Link>
+      <br />
+      <Link className="text-blue-500" href="mypage">
+        임시 마이페이지로 /mypage
       </Link>
     </div>
   );
