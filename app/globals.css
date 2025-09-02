@@ -110,9 +110,30 @@ video {
   border: 1px solid var(--White, #fff);
   border-radius: 16px;
 }
+@utility inner-shadow {
+  box-shadow: 0 -30px 25px 8px rgba(0, 0, 0, 0.12) inset, 0 30px 25px 8px rgba(0, 0, 0, 0.12) inset;
+}
 
 @utility bg-main {
   background-color: var(--bg-main);
+}
+@utility bg-gray1 {
+  background-color: var(--gray1);
+}
+@utility bg-gray2 {
+  background-color: var(--gray2);
+}
+@utility bg-gray3 {
+  background-color: var(--gray3);
+}
+@utility bg-gray4 {
+  background-color: var(--gray4);
+}
+@utility bg-primary {
+  background-color: var(--primary);
+}
+@utility bg-secondary {
+  background-color: var(--secondary);
 }
 
 @utility h1 {

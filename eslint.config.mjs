@@ -12,28 +12,46 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
-  { ignores: ['.next/*', 'node_modules/*'] },
+  { ignores: ['.next/*', 'node_modules/*', 'next-env.d.ts', 'svgr.d.ts'] },
+
   ...compat.config({
     extends: ['next/core-web-vitals', 'next/typescript', 'prettier'],
   }),
+
+  // import 정렬 규칙
   {
+    settings: {
+      // TS alias 해석 (내부/외부 구분 정확히)
+      'import/resolver': {
+        typescript: true,
+        node: true,
+      },
+    },
     rules: {
-      '@typescript-eslint/no-unused-vars': 'off',
-      '@typescript-eslint/no-explicit-any': 'off',
-      'sort-imports': [
-        'error',
-        {
-          ignoreDeclarationSort: true,
-          memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
-          allowSeparatedGroups: false,
-        },
-      ],
+      // 중복 충돌 방지: import/order만 사용
+      'sort-imports': 'off',
+
       'import/order': [
         'error',
         {
-          groups: [['builtin', 'external'], 'internal', ['parent', 'sibling'], 'index', 'object'],
-          pathGroupsExcludedImportTypes: ['react'],
-          'newlines-between': 'always',
+          groups: [
+            ['builtin', 'external'], // 1) 외부
+            'internal', // 2) 내부 (alias)
+            ['parent', 'sibling'],
+            'index',
+            'object',
+          ],
+
+          // ── 서브그룹: internal 안에서의 순서 ──────────────────────────
+          pathGroups: [
+            { pattern: '@/**', group: 'internal', position: 'before' },
+            { pattern: '@*', group: 'internal', position: 'after' },
+          ],
+
+          pathGroupsExcludedImportTypes: ['builtin', 'external', 'react'],
+
+          'newlines-between': 'always-and-inside-groups',
+
           alphabetize: { order: 'asc', caseInsensitive: true },
         },
       ],
