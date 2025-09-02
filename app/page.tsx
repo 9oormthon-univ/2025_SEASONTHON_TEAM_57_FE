@@ -18,6 +18,10 @@ export default function Home() {
       <Link className="text-blue-500" href="mypage">
         임시 마이페이지로 /mypage
       </Link>
+      <br />
+      <Link className="text-blue-500" href="alarm-center">
+        임시 알람센터 페이지로 /alarm-center
+      </Link>
     </div>
   );
 }
