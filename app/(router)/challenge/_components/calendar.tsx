@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import dayjs from 'dayjs';
 import { useEffect, useState } from 'react';
 
-import ShadowBox from '@/components/layout/shadow';
+import ShadowBox from '@/components/shadow';
 
 import LeftArrow from '@icons/arrow/left.svg';
 import RightArrow from '@icons/arrow/right.svg';
