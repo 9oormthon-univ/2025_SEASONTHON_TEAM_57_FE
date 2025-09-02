@@ -1,12 +1,12 @@
-import DateCalendar from '@/app/(router)/challenge/_components/calendar';
-import Wrapper from '@/components/layout/body';
+import BottomButton from '@/components/button/bottomButton';
 import ShadowBox from '@/components/shadow';
 
+import DateCalendar from './_components/calendar';
 import HotChallengeCard from './_components/hotChallengeCard';
 
 export default function ChallengePage() {
   return (
-    <Wrapper>
+    <>
       <DateCalendar />
 
       {/* main contents area */}
@@ -30,7 +30,11 @@ export default function ChallengePage() {
           </div>
         </Section>
       </div>
-    </Wrapper>
+      <BottomButton
+        buttonText="확인"
+        description="최대 2주정도 소요됩니다"
+      />
+    </>
   );
 }
 
