@@ -1,8 +1,8 @@
-import Bookmark from '@icons/bookmark.svg';
-
 import DateCalendar from '@/components/calendar/calendar';
 import Wrapper from '@/components/layout/body';
 import ShadowBox from '@/components/layout/shadow';
+
+import Bookmark from '@icons/bookmark.svg';
 
 export default function ChallengePage() {
   return (

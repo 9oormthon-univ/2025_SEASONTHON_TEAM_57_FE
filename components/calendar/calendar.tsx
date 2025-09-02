@@ -1,15 +1,16 @@
 'use client';
 
-dayjs.locale('en');
-
-import LeftArrow from '@icons/arrow/left.svg';
-import RightArrow from '@icons/arrow/right.svg';
-import CloseIcon from '@icons/x.svg';
 import clsx from 'clsx';
 import dayjs from 'dayjs';
 import { useEffect, useState } from 'react';
 
 import ShadowBox from '@/components/layout/shadow';
+
+import LeftArrow from '@icons/arrow/left.svg';
+import RightArrow from '@icons/arrow/right.svg';
+import CloseIcon from '@icons/x.svg';
+
+dayjs.locale('en');
 
 export default function DateCalendar() {
   // 연도 변환 모달
