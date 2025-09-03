@@ -30,10 +30,6 @@ export default function ChallengePage() {
           </div>
         </Section>
       </div>
-      <BottomButton
-        buttonText="확인"
-        description="최대 2주정도 소요됩니다"
-      />
     </>
   );
 }
