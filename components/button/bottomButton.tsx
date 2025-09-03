@@ -1,0 +1,60 @@
+'use client';
+
+import clsx from 'clsx';
+import { useState } from 'react';
+
+import Modal from '@/components/modal/modal';
+
+import ButtonBox from './buttonBox';
+
+export default function BottomButton({
+  buttonText,
+  modal,
+  description,
+}: Readonly<{
+  buttonText: string;
+  modal?: {
+    formId: string;
+    title: string;
+    loadingText: string;
+  };
+  description?: string;
+}>) {
+  const [open, setOpen] = useState<boolean>(false);
+
+  return (
+    <>
+      <div className="fixed flex justify-center inset-x-0 bottom-[3.2rem]">
+        <div className="flex w-full max-w-[50rem] px-[3.2rem]">
+          {description && (
+            <div
+              className={clsx(
+                'absolute top-[-2.8rem] left-1/2 -translate-x-1/2',
+                'caption text-center text-gray3'
+              )}
+            >
+              {description}
+            </div>
+          )}
+          <ButtonBox
+            onClick={() => setOpen(true)}
+            bgColor="var(--primary)"
+            className="max-w-[43.6rem]"
+            wFull
+          >
+            {buttonText}
+          </ButtonBox>
+        </div>
+      </div>
+      {modal && open && (
+        <Modal
+          formId={modal.formId}
+          title={modal.title}
+          loadingText={modal.loadingText}
+          onCancel={() => setOpen(false)}
+          open={open}
+        />
+      )}
+    </>
+  );
+}

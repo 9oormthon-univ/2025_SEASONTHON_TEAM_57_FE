@@ -136,6 +136,22 @@ video {
   background-color: var(--secondary);
 }
 
+@utility text-gray1 {
+  color: var(--gray1);
+}
+@utility text-gray2 {
+  color: var(--gray2);
+}
+@utility text-gray3 {
+  color: var(--gray3);
+}
+@utility text-gray4 {
+  color: var(--gray4);
+}
+@utility text-primary {
+  color: var(--primary);
+}
+
 @utility h1 {
   @apply font-semibold text-[2.8rem] leading-[3.6rem] tracking-[-0.025em];
 }
