@@ -4,7 +4,9 @@ import Talent from '@/public/alram/재능공유.svg';
 
 import type { AlarmType } from './types';
 
-export const ICON_MAP: Record<AlarmType, any> = {
+type SvgIconType = React.FC<React.SVGProps<SVGSVGElement>>;
+
+export const ICON_MAP: Record<AlarmType, SvgIconType> = {
   message: Message,
   challenge: Challenge,
   talent: Talent,

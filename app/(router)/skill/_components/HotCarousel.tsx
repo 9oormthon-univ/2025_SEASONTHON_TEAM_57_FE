@@ -23,9 +23,9 @@ export default function HotCarousel({
 }) {
   return (
     <div className={clsx('overflow-x-auto scrollbar-hidden', className)}>
-      <ul className="flex gap-3 pr-0 pl-[32px]">
+      <ul className="flex gap-3 pr-0 pl-[3.2rem]">
         {items.map(c => (
-          <li key={c.id} className="shrink-0 w-[260px]">
+          <li key={c.id} className="shrink-0 w-[26rem]">
             <HotCard
               id={c.id}
               title={c.title}
@@ -36,7 +36,7 @@ export default function HotCarousel({
             />
           </li>
         ))}
-        <li aria-hidden className="shrink-0 w-[32px]" />
+        <li aria-hidden className="shrink-0 w-[3.2rem]" />
       </ul>
     </div>
   );

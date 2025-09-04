@@ -3,7 +3,6 @@
 import React from 'react';
 
 import ShadowBox from '@/components/shadow';
-import Bookmark from '@/public/icons/bookmark.svg';
 import 모집완료 from '@/public/skill/모집완료.svg';
 import 모집중 from '@/public/skill/모집중.svg';
 
@@ -31,14 +30,6 @@ export default function HotCard({ id, title, badgeRight, desc1, desc2, color }: 
         <div className="absolute left-3 top-3 z-10">
           <SvgBox Icon={StatusIcon} size={24} />
         </div>
-
-        <button
-          className="absolute right-3 top-3 h-9 w-9 rounded-full bg-white/90 border border-[var(--gray2)] flex items-center justify-center z-10"
-          aria-label="북마크"
-          type="button"
-        >
-          <SvgBox Icon={Bookmark} size={24} className="shrink-0" />
-        </button>
       </div>
 
       <div className="mt-2 px-1 pb-2">
