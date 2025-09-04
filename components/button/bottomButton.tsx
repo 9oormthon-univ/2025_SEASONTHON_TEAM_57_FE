@@ -28,7 +28,7 @@ export default function BottomButton({
 
   return (
     <>
-      <div className="fixed flex justify-center inset-x-0 bottom-[3.2rem]">
+      <div className="fixed flex justify-center inset-x-0 bottom-[3.2rem] z-[100]">
         <div className="flex w-full max-w-[50rem] px-[3.2rem]">
           {description && (
             <div

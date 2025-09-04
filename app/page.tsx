@@ -7,30 +7,16 @@ export default function Home() {
       <p>Main Page</p>
       <Link
         className="text-blue-500"
-        href="/challenge"
+        href="/signin"
       >
-        임시 챌린지 페이지로 /challenge
+        임시 로그인 페이지로
       </Link>
       <br />
       <Link
         className="text-blue-500"
-        href="/skill"
+        href="/debug"
       >
-        임시 재능교환소 페이지로 /skill
-      </Link>
-      <br />
-      <Link
-        className="text-blue-500"
-        href="mypage"
-      >
-        임시 마이페이지로 /mypage
-      </Link>
-      <br />
-      <Link
-        className="text-blue-500"
-        href="alarm-center"
-      >
-        임시 알람센터 페이지로 /alarm-center
+        임시 디버그 페이지로
       </Link>
     </div>
   );
