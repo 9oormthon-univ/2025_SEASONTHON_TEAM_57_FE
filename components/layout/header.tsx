@@ -21,7 +21,7 @@ export default function Header({
   return (
     <header
       className={clsx(
-        'z-50 bg-main/95 backdrop-blur pl-[32px] pr-[32px] h-[64px] flex items-center',
+        'z-50 bg-main/95 backdrop-blur pl-[3.2rem] pr-[3.2rem] h-[6.4rem] flex items-center',
         sticky && 'sticky top-0',
         className
       )}
@@ -32,9 +32,12 @@ export default function Header({
         </div>
 
         {rightItems.length > 0 && (
-          <div className="flex items-center gap-[20px] flex-row-reverse">
+          <div className="flex items-center gap-[2rem] flex-row-reverse">
             {rightItems.map((node, idx) => (
-              <span key={idx} className="inline-flex items-center justify-center shrink-0">
+              <span
+                key={idx}
+                className="inline-flex items-center justify-center shrink-0"
+              >
                 {node}
               </span>
             ))}
