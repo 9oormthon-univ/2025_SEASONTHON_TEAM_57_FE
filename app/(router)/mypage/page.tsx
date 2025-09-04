@@ -1,9 +1,8 @@
-import Award from '@/public/icons/award.svg';
+import Bookmark from '@/public/icons/bookmark.svg';
 import Clipboard from '@/public/icons/clipboard.svg';
 import HelpCircle from '@/public/icons/help-circle.svg';
-import LogOut from '@/public/icons/logout.svg';
+import Logout from '@/public/icons/logout.svg';
 import Monitor from '@/public/icons/monitor.svg';
-import Trash from '@/public/icons/trash.svg';
 
 import ListItem from './_components/ListItem';
 import ProfileSection from './_components/ProfileSection';
@@ -14,12 +13,12 @@ export default function MyPage() {
       <ProfileSection />
 
       <ul className="flex flex-col">
+        <ListItem Icon={Monitor} label="신뢰도 점수 0000" />
+        <ListItem Icon={Bookmark} label="스크랩 게시물 보기" href="#bookmark" />
         <ListItem Icon={Clipboard} label="내 정보 수정" href="#profile" />
-        <ListItem Icon={Monitor} label="나의 재능" href="#talent" />
-        <ListItem Icon={HelpCircle} label="고객센터" href="#cs" />
-        <ListItem Icon={Award} label="등급표" href="#grade" />
-        <ListItem Icon={LogOut} label="로그아웃" href="#logout" />
-        <ListItem Icon={Trash} label="회원탈퇴" href="#withdraw" />
+        <ListItem Icon={Monitor} label="나의 재능" href="#myskill" />
+        <ListItem Icon={HelpCircle} label="고객센터" href="#helpcall" />
+        <ListItem Icon={Logout} label="로그아웃" />
       </ul>
     </main>
   );

@@ -36,7 +36,6 @@ export default function HotCarousel({
             />
           </li>
         ))}
-        {/* 좌우 32px 여백 유지용 스페이서 */}
         <li aria-hidden className="shrink-0 w-[32px]" />
       </ul>
     </div>

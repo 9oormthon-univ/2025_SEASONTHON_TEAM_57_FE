@@ -23,16 +23,6 @@ export default function AlramLayout({ children }: { children: React.ReactNode })
             <Back width={24} height={24} />
           </button>
         }
-        rightItems={[
-          <Link
-            key="settings"
-            aria-label="설정"
-            href="/settings"
-            className="h-10 w-10 rounded-full hover:bg-white/50 active:opacity-90"
-          >
-            <Settings width={24} height={24} />
-          </Link>,
-        ]}
       />
 
       <section className="flex-1 overflow-y-auto pb-28">
