@@ -12,7 +12,7 @@ export const GetAccessToken = async (param: AccInterlockCode) => {
   try {
     const res = await api<'getAccessToken'>(
       'POST',
-      '/api/v1/auth/kakao/login',
+      '/v1/auth/kakao/login',
       {
         code: param.code,
       },
@@ -59,7 +59,7 @@ export const RegisterUser = async (param: RegisterUserParams) => {
 
     const res = await api<'registerUser'>(
       'POST',
-      '/api/v1/auth/signup',
+      '/v1/auth/signup',
       {
         linkToken: link_token,
         profile: profile,
@@ -104,7 +104,7 @@ export const RefreshAccessToken = async () => {
 
     const res = await api<'refreshAccessToken'>(
       'POST',
-      '/api/v1/auth/refresh',
+      '/v1/auth/refresh',
       {
         refreshToken: refreshToken,
       },
@@ -135,7 +135,7 @@ export const RevokeAccessToken = async (): Promise<void> => {
 
     await api<'logout'>(
       'POST',
-      '/api/v1/auth/logout',
+      '/v1/auth/logout',
       {
         refreshToken: refreshToken,
       },
