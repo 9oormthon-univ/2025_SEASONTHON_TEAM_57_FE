@@ -1,26 +1,23 @@
 import Link from 'next/link';
 import React from 'react';
 
-import NextJS from '@/public/next.svg';
-
 export default function Home() {
   return (
     <div className="h1">
       <p>Main Page</p>
       <Link
         className="text-blue-500"
-        href="/challenge"
+        href="/signin"
       >
-        임시 챌린지 페이지로 /challenge
+        임시 로그인 페이지로
       </Link>
       <br />
       <Link
         className="text-blue-500"
-        href="/skill"
+        href="/debug"
       >
-        임시 재능교환소 페이지로 /skill
+        임시 디버그 페이지로
       </Link>
-      <NextJS />
     </div>
   );
 }

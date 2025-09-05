@@ -1,8 +1,9 @@
 import clsx from 'clsx';
 import type { Metadata } from 'next';
 
-import { pretendard } from '@/public/font';
+import ButtonNavBar from '@/components/layout/navBar';
 
+import { pretendard } from '@/public/font';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -37,6 +38,7 @@ export default function RootLayout({
           )}
         >
           {children}
+          <ButtonNavBar></ButtonNavBar>
         </div>
       </body>
     </html>

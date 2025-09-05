@@ -1,0 +1,30 @@
+.modal {
+  display: block;
+  position: relative;
+  width: 30rem;
+  height: 16rem;
+  background-color: white;
+  border: 1px solid #fff0ed;
+  padding: 1.6rem 2.2rem;
+  border-radius: 1.6rem;
+  z-index: 102;
+}
+
+.circle {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 100%;
+  border: 0.7rem solid var(--gray2);
+  border-top-color: var(--primary);
+
+  animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

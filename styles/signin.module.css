@@ -1,0 +1,22 @@
+.symbol {
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 2.8rem; /* 140% */
+  letter-spacing: -0.5px;
+
+  margin-bottom: 1.2rem;
+}
+
+.signupLink {
+  color: var(--gray2);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px; /* 128.571% */
+  letter-spacing: -0.35px;
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+}
