@@ -8,11 +8,15 @@ import Modal from '@/components/modal/modal';
 import ButtonBox from './buttonBox';
 
 export default function BottomButton({
-  buttonText,
+  button,
   modal,
   description,
 }: Readonly<{
-  buttonText: string;
+  button: {
+    buttonText: string;
+    disabled?: boolean;
+    onClick?: () => void;
+  };
   modal?: {
     formId: string;
     title: string;
@@ -24,7 +28,7 @@ export default function BottomButton({
 
   return (
     <>
-      <div className="fixed flex justify-center inset-x-0 bottom-[3.2rem]">
+      <div className="fixed flex justify-center inset-x-0 bottom-[3.2rem] z-[100]">
         <div className="flex w-full max-w-[50rem] px-[3.2rem]">
           {description && (
             <div
@@ -37,12 +41,13 @@ export default function BottomButton({
             </div>
           )}
           <ButtonBox
-            onClick={() => setOpen(true)}
+            onClick={modal ? () => setOpen(true) : button.onClick}
             bgColor="var(--primary)"
-            className="max-w-[43.6rem]"
+            className="max-w-[43.6rem] text-white"
+            disabled={button.disabled}
             wFull
           >
-            {buttonText}
+            {button.buttonText}
           </ButtonBox>
         </div>
       </div>

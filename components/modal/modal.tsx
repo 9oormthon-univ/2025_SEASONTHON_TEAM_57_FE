@@ -37,23 +37,23 @@ export default function Modal({
           </div>
         ) : (
           <>
-            <div className="body1 mt-[2rem] mb-[3.2rem] text-center">{title}</div>
-            <div className="flex justify-between gap-[3.2rem]">
+            <h3 className="mt-[1.6rem] mb-[3.2rem] text-center">{title}</h3>
+            <div className="flex justify-between gap-[1.6rem]">
+              <ButtonBox
+                onClick={onCancel}
+                bgColor="white"
+                className="!h-[5rem] !border !border-[var(--gray2)]"
+              >
+                아니요
+              </ButtonBox>
               <ButtonBox
                 type="submit"
                 bgColor="var(--primary)"
                 formId={formId}
                 disabled={!open}
-                className="!border !border-[var(--primary)]"
+                className="!h-[5rem] text-white !border !border-[var(--primary)]"
               >
                 예
-              </ButtonBox>
-              <ButtonBox
-                onClick={onCancel}
-                bgColor="white"
-                className="!border !border-[var(--gray2)]"
-              >
-                아니요
               </ButtonBox>
             </div>
           </>

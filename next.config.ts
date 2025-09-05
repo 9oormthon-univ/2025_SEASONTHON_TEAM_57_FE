@@ -1,6 +1,14 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'http',
+        hostname: 'img1.kakaocdn.net',
+      },
+    ],
+  },
   turbopack: {
     rules: {
       '*.svg': {

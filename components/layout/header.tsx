@@ -32,9 +32,12 @@ export default function Header({
         </div>
 
         {rightItems.length > 0 && (
-          <div className="flex items-center gap-[2.0rem] flex-row-reverse">
+          <div className="flex items-center gap-[2rem] flex-row-reverse">
             {rightItems.map((node, idx) => (
-              <span key={idx} className="inline-flex items-center justify-center shrink-0">
+              <span
+                key={idx}
+                className="inline-flex items-center justify-center shrink-0"
+              >
                 {node}
               </span>
             ))}

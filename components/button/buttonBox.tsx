@@ -29,14 +29,14 @@ export default function ButtonBox({
       form={formId}
       className={clsx(
         wFull ? 'w-full' : 'w-[32.6rem]',
-        'h-[6rem] rounded-[1.6rem] text-white',
-        disabled && 'grayscale-90',
+        'h-[6rem] rounded-[1.6rem]',
+        disabled && 'grayscale-100',
         className
       )}
       style={{ backgroundColor: bgColor }}
       onClick={disabled ? undefined : onClick}
     >
-      <div className={clsx('btn1', innerClassName)}>{children}</div>
+      <div className={clsx('btn1 w-full px-[2rem]', innerClassName)}>{children}</div>
     </button>
   );
 }
