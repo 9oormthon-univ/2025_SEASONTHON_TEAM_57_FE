@@ -16,7 +16,7 @@ export interface RegisteredResponse {
 }
 export interface GetAccessToken {
   method: 'POST';
-  endpoint: '/api/v1/auth/kakao/login';
+  endpoint: '/v1/auth/kakao/login';
   req: {
     code: string;
   };
@@ -26,7 +26,7 @@ export interface GetAccessToken {
 // 회원가입
 export interface RegisterUser {
   method: 'POST';
-  endpoint: '/api/v1/auth/signup';
+  endpoint: '/v1/auth/signup';
   req: {
     linkToken: string;
     profile: string;
@@ -50,7 +50,7 @@ export interface RegisterUser {
 
 export interface RefreshAccessToken {
   method: 'POST';
-  endpoint: '/api/v1/auth/refresh';
+  endpoint: '/v1/auth/refresh';
   req: {
     refreshToken: string;
   };
@@ -61,7 +61,7 @@ export interface RefreshAccessToken {
 
 export interface Logout {
   method: 'POST';
-  endpoint: '/api/v1/auth/logout';
+  endpoint: '/v1/auth/logout';
   req: {
     refreshToken: string;
   };

@@ -81,7 +81,10 @@ export default function SkillSharePage() {
   return (
     <>
       <div className="mt-4">
-        <FilterTab defaultIndex={0} onChange={handleFilterChange} />
+        <FilterTab
+          defaultIndex={0}
+          onChange={handleFilterChange}
+        />
 
         <div className="mt-6" />
         <div className="flex items-center justify-between">
@@ -89,7 +92,10 @@ export default function SkillSharePage() {
           <MoreLink href="/hot" />
         </div>
 
-        <HotCarousel items={hotCards} className="mt-3" />
+        <HotCarousel
+          items={hotCards}
+          className="mt-3"
+        />
       </div>
 
       <div className="flex items-center justify-between mt-[40px] mb-[10px]">
@@ -98,7 +104,10 @@ export default function SkillSharePage() {
       </div>
 
       <div className="mt-4">
-        <CategoryChips boxSize={60} iconPaddingRatio={0.08} />
+        <CategoryChips
+          boxSize={60}
+          iconPaddingRatio={0.08}
+        />
       </div>
 
       <div className="flex items-center justify-between mt-[40px] mb-[12px]">
@@ -106,7 +115,10 @@ export default function SkillSharePage() {
         <MoreLink href="/hot" />
       </div>
 
-      <PostList posts={posts} className="mt-4" />
+      <PostList
+        posts={posts}
+        className="mt-4"
+      />
 
       <div className="h-6" />
     </>
