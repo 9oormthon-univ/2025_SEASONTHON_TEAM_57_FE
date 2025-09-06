@@ -62,7 +62,7 @@ export default function SkillSharePage() {
         {skills.slice(0, 3).map((skill, i) => (
           <PostList
             key={skill.id ?? i}
-            imgIndex={i} // 👉 0,1,2 내려줌
+            imgIndex={i}
             posts={[{ ...skill, content: skill.title, categoryId: skill.categories[0].name }]}
           />
         ))}

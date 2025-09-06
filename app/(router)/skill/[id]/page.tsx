@@ -74,7 +74,6 @@ const SAMPLE: CommentNode[] = [
   },
 ];
 
-// ===== 내부 API 프록시 호출 (절대 URL은 env 사용) =====
 async function fetchPost(id: string): Promise<ApiData> {
   const base = process.env.NEXT_PUBLIC_SITE_URL;
   if (!base) {
@@ -97,8 +96,6 @@ async function fetchPost(id: string): Promise<ApiData> {
   return json.data;
 }
 
-// ===== 페이지 컴포넌트 =====
-// ❗️Next 15: params는 Promise로 받고, 사용 시 await 해야 함
 export default async function Page({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
 
@@ -115,7 +112,6 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
 
   return (
     <main className="py-[1.6rem]">
-      {/* 작성자 정보 */}
       <section className="mb-[1.6rem]">
         <ProfileImg
           src="/mypage/sample_profile.png"
@@ -124,7 +120,6 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
         />
       </section>
 
-      {/* 본문 + 이미지 */}
       <section>
         <TextWithGallery
           title={`${typeLabel ? `[${typeLabel}] ` : ''}${post.title}`}
@@ -135,14 +130,12 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
         />
       </section>
 
-      {/* 댓글 목록 */}
       <Comments
         items={SAMPLE}
         className="pt-[1.6rem]"
         ctn_message={commentCount}
       />
 
-      {/* 댓글 작성 폼 */}
       <CommentForm postId={Number(post.id)} />
     </main>
   );

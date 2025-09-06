@@ -1,15 +1,14 @@
 import Image from 'next/image';
 
 type Props = {
-  src?: string; // 예: "/mypage/sample_profile.png"
-  alt: string; // 사용자 이름 (이니셜 생성에 사용)
-  sizeRem?: number; // 기본 3.2rem
+  src?: string;
+  alt: string;
+  sizeRem?: number;
   className?: string;
 };
 
 function getInitials(name: string) {
   if (!name) return '';
-  // 한글/영문 대응: 공백 기준 앞 2글자
   const trimmed = name.trim();
   const parts = trimmed.split(/\s+/);
   if (parts.length === 1) return trimmed.slice(0, 2);
@@ -32,7 +31,7 @@ export default function Avatar({ src, alt, sizeRem = 3.6, className = '' }: Prop
           src={src.startsWith('/') ? src : `/${src}`}
           alt={alt}
           fill
-          sizes={`${sizeRem * 10}px`} // 루트가 10px이므로 rem*10 = px
+          sizes={`${sizeRem * 10}px`}
           className="object-cover"
           priority={false}
         />

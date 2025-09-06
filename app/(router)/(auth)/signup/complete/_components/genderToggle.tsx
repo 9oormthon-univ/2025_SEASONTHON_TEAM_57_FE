@@ -11,7 +11,7 @@ interface Props {
   className?: string;
   labels?: { male?: string; female?: string };
   name?: string;
-  disabled?: boolean; // ← 추가
+  disabled?: boolean;
 }
 
 export default function GenderToggle({

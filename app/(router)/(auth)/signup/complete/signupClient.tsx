@@ -25,11 +25,10 @@ export default function SignupClient({ action, memberInfo }: Props) {
   const [profile, setProfile] = useState<string>(memberInfo.profile);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let raw = e.target.value.replace(/\D/g, ''); // 숫자만
+    let raw = e.target.value.replace(/\D/g, '');
     if (raw.length > 8) raw = raw.slice(0, 8);
 
     if (raw.length === 8) {
-      // YYYY-MM-DD 포맷으로 변환
       const formatted = `${raw.slice(0, 4)}-${raw.slice(4, 6)}-${raw.slice(6, 8)}`;
       setValue(formatted);
     } else {
@@ -88,7 +87,6 @@ export default function SignupClient({ action, memberInfo }: Props) {
             value={gender}
             onChange={setGender}
             className="mt-[.8rem]"
-            // disabled
           />
         </div>
         <div>

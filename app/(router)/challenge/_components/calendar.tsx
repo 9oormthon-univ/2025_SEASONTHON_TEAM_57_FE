@@ -18,22 +18,18 @@ import type { Props } from '../(main)/challengeMain';
 dayjs.locale('ko');
 
 export default function DateCalendar({ action }: Props) {
-  // ───────── UI 상태 ─────────
-  const [isExpanded, setIsExpanded] = useState<boolean>(false); // 접힘/펼침
-  const [showYearModal, setShowYearModal] = useState<boolean>(false); // 연도 선택 모달
+  const [isExpanded, setIsExpanded] = useState<boolean>(false);
+  const [showYearModal, setShowYearModal] = useState<boolean>(false);
 
-  // ───────── 날짜 상태 ─────────
-  const [today, setToday] = useState<Dayjs>(dayjs()); // 기준(앵커) 날짜
+  const [today, setToday] = useState<Dayjs>(dayjs());
   const [selectedDate, setSelectedDate] = useState<[string, number, Dayjs]>([
     dayjs().format('YYYY-MM-DD'),
     0,
     dayjs(),
   ]);
 
-  // 서버 데이터
   const [calendarDataFetched, setCalendarData] = useState<CertificatingType[] | null>(null);
 
-  // ───────── 상수 ─────────
   const currentDate = dayjs();
   const currentYear = currentDate.year();
   const pastYear = currentDate.subtract(200, 'year').year();
@@ -46,7 +42,6 @@ export default function DateCalendar({ action }: Props) {
 
   const dayOfTheWeek = ['일', '월', '화', '수', '목', '금', '토'] as const;
 
-  // ───────── 월 뷰 데이터 ─────────
   interface DateWithStatus {
     date: Dayjs;
     status: string[];
@@ -70,7 +65,6 @@ export default function DateCalendar({ action }: Props) {
     [emptyDates, dates]
   );
 
-  // ───────── 주 뷰 데이터 (today가 속한 주: 일~토) ─────────
   const weekStart = today.subtract(today.day(), 'day');
   const weekData: DateWithStatus[] = useMemo(
     () =>
@@ -78,11 +72,9 @@ export default function DateCalendar({ action }: Props) {
         date: weekStart.add(i, 'day'),
         status: ['point'],
       })),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     [today.valueOf()]
   );
 
-  // ───────── 이동/선택 ─────────
   const onClickPast = () => {
     setToday(prev => (isExpanded ? prev.subtract(1, 'month') : prev.subtract(1, 'week')));
   };
@@ -102,28 +94,23 @@ export default function DateCalendar({ action }: Props) {
   const toggleYearModal = () => setShowYearModal(v => !v);
   const closeYearModal = () => setShowYearModal(false);
 
-  // ───────── 데이터 로드 (월 단위) ─────────
   useEffect(() => {
     const run = async () => {
       const res = await action({ year: today.year(), month: today.month() + 1 });
-      // any 금지: 배열 타입 가드
       const arr = Array.isArray(res) ? (res as CertificatingType[]) : null;
       setCalendarData(arr);
     };
     run();
   }, [action, today]);
 
-  // 해당 날짜에 기록 여부
   const hasDot = (d: Dayjs): boolean =>
     Array.isArray(calendarDataFetched) &&
     calendarDataFetched.some(item => item.date === d.format('YYYY-MM-DD'));
 
   return (
     <ShadowBox>
-      {/* Date Calendar */}
       <div className="z-[200]">
         <div className="pb-[12px]">
-          {/* 달력의 헤더 */}
           <header
             className={clsx(
               'relative',
@@ -133,7 +120,6 @@ export default function DateCalendar({ action }: Props) {
             {isExpanded && (
               <>
                 <div className="relative flex px-[1.2rem] justify-between">
-                  {/* 이전 */}
                   <div className="left-4">
                     <button
                       type="button"
@@ -144,8 +130,6 @@ export default function DateCalendar({ action }: Props) {
                     </button>
                   </div>
 
-                  {/* 연·월: 접혔을 때 숨김 */}
-
                   <div
                     onClick={toggleYearModal}
                     className="flex items-center cursor-pointer"
@@ -155,7 +139,6 @@ export default function DateCalendar({ action }: Props) {
                     </span>
                   </div>
 
-                  {/* 다음 */}
                   <div className="right-4">
                     <button
                       type="button"
@@ -165,7 +148,6 @@ export default function DateCalendar({ action }: Props) {
                       <RightArrow />
                     </button>
                   </div>
-                  {/* 연도 변경 모달 (펼침 상태에서만) */}
                   {showYearModal && (
                     <section className="absolute top-[55px] left-0 z-[201] bg-[#fff] border-[1px] w-[330px] h-[280px] p-6 rounded-[15px]">
                       <ul
@@ -188,7 +170,6 @@ export default function DateCalendar({ action }: Props) {
                         ))}
                       </ul>
 
-                      {/* 연도 모달 닫기 */}
                       <div className="flex flex-row justify-end pt-2">
                         <button
                           type="button"
@@ -204,7 +185,6 @@ export default function DateCalendar({ action }: Props) {
               </>
             )}
 
-            {/* 요일 */}
             <ul
               className={clsx(
                 'flex flex-row justify-around px-[3.5px] pb-[4px] text-[12px] font-bold',
@@ -224,12 +204,10 @@ export default function DateCalendar({ action }: Props) {
             </ul>
           </header>
 
-          {/* 날짜 표시 (애니메이션 컨테이너) */}
           <div
             className="px-[3.5px] overflow-hidden transition-[max-height] duration-300"
-            style={{ maxHeight: isExpanded ? 1000 : 84 }} // 접힘 높이는 1주 라인에 맞춤
+            style={{ maxHeight: isExpanded ? 1000 : 84 }}
           >
-            {/* 펼침: 월 뷰 */}
             {isExpanded ? (
               <main>
                 <ul className="flex flex-row flex-wrap">
@@ -255,7 +233,6 @@ export default function DateCalendar({ action }: Props) {
                             {date.date.format('D')}
                           </div>
 
-                          {/* 점(기록) */}
                           <div className="flex mt-[5px] h-[6px] gap-[3px]">
                             {calendarDataFetched &&
                               calendarDataFetched.length > 0 &&
@@ -283,7 +260,6 @@ export default function DateCalendar({ action }: Props) {
                 </ul>
               </main>
             ) : (
-              // 접힘: 주 뷰
               <main>
                 <ul className="flex flex-row flex-wrap">
                   {weekData.map((date, index) => (
@@ -307,7 +283,6 @@ export default function DateCalendar({ action }: Props) {
                           {date.date.format('D')}
                         </div>
 
-                        {/* 점(기록) */}
                         <div className="flex mt-[5px] h-[6px] gap-[3px]">
                           {calendarDataFetched &&
                             calendarDataFetched.length > 0 &&
@@ -336,7 +311,6 @@ export default function DateCalendar({ action }: Props) {
             )}
           </div>
 
-          {/* 모달 하단 */}
           <section className="flex items-center justify-center">
             <button
               type="button"
@@ -349,7 +323,6 @@ export default function DateCalendar({ action }: Props) {
         </div>
       </div>
 
-      {/* DateCalendar 외부 영역: 연도 모달 닫기 */}
       <div
         className="fixed top-0 left-0 w-full h-full z-[199]"
         style={{ display: showYearModal ? 'block' : 'none' }}

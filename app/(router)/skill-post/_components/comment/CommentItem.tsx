@@ -5,28 +5,27 @@ import Avatar from './Avatar';
 export type CommentNode = {
   id: string;
   authorName: string;
-  avatarUrl?: string; // 예: "/mypage/sample_profile.png"
+  avatarUrl?: string;
   content: string;
-  createdAt: string; // 예: "2025-09-06 12:30"
+  createdAt: string;
   replies?: CommentNode[];
 };
 
 type Props = {
   node: CommentNode;
-  depth?: 0 | 1; // 필요하면 더 늘릴 수 있음
+  depth?: 0 | 1;
   className?: string;
 };
 
 export default function CommentItem({ node, depth = 0, className }: Props) {
   const isReply = depth > 0;
-  const avatarSize = 3.6; // rem
+  const avatarSize = 3.6;
 
   return (
     <div
       className={clsx('w-full', className)}
-      style={isReply ? { paddingLeft: '4.0rem' } : undefined} // 답글 들여쓰기 40px
+      style={isReply ? { paddingLeft: '4.0rem' } : undefined}
     >
-      {/* 세로 가이드 라인(답글일 때) */}
       {isReply && (
         <span
           aria-hidden
@@ -52,13 +51,11 @@ export default function CommentItem({ node, depth = 0, className }: Props) {
             {node.content}
           </p>
 
-          {/* 액션 영역(추후 onClick 연결 가능) */}
           <div className="mt-[0.8rem] flex items-center gap-[1.2rem]">
             <button className="btn2 text-[var(--gray3)] hover:text-[var(--black)]">좋아요</button>
             <button className="btn2 text-[var(--gray3)] hover:text-[var(--black)]">답글</button>
           </div>
 
-          {/* 하위 답글 렌더링 */}
           {node.replies?.length ? (
             <div className="mt-[1.2rem] space-y-[1.2rem]">
               {node.replies.map(child => (

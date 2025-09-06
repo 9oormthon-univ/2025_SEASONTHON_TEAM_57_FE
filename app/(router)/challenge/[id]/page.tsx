@@ -18,7 +18,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
       />
       <div className="mt-[2rem]">
         <ProfileImg
-          src="/mypage/sample_profile.png"
+          src="/mypage/1.png"
           name="서니"
           time="20시간 전"
         />
@@ -34,7 +34,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
       <div className="body3">
         25/26시즌 생활체육지도자 2급 스키 같은 지도자 준비중이거나 스키 <br />
         레벨/티칭1 준비중인 사람도 환영합니다. <br />
-         같이 챌린지를 하면서 자격증 함께 취득해봐요:)
+        같이 챌린지를 하면서 자격증 함께 취득해봐요:)
       </div>
 
       <BottomButton button={{ buttonText: '도전하기', href: '/challenge' }} />

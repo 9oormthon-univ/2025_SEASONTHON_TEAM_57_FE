@@ -8,7 +8,7 @@ export default function HotChallengeCard({
   endSoon,
   title = '웹개발',
   description = 'Html, CSS, React를 쉽게 배워봐요!\n기본 개념부터, 협업방법까지 알려드..',
-  imageSrc = '/image/1.png', // ✅ 이미지 사용 (public/ 경로)
+  imageSrc = '/image/1.png',
   status = '모집중',
 }: {
   clamp?: number;
@@ -27,7 +27,6 @@ export default function HotChallengeCard({
           : 'grid-rows-[16rem_8rem] min-w-[24rem]'
       )}
     >
-      {/* 상단 이미지 영역 */}
       <div className="inner-shadow rounded-[1.6rem] p-[.6rem]">
         <div className="relative w-full h-full rounded-[1.2rem] overflow-hidden border-[.5rem] border-white">
           <Image
@@ -51,7 +50,6 @@ export default function HotChallengeCard({
         </div>
       </div>
 
-      {/* 본문 */}
       <div className="p-[.8rem]">
         <div className="body1 !leading-[140%]">{title}</div>
         <div

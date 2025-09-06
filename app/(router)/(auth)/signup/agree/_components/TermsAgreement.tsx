@@ -16,27 +16,23 @@ export default function AgreementForm({ terms }: { terms: Term[] }) {
   const router = useRouter();
   const [state, setState] = useState<boolean[]>(() => terms.map(() => false));
 
-  // terms 배열이 바뀌면 기존 값을 최대한 보존하면서 재정렬
   useEffect(() => {
     setState(prev => terms.map((_, i) => prev[i] ?? false));
   }, [terms]);
 
-  // 파생값: 전체 동의 여부 (별도 상태 X)
   const agreeAll = useMemo(() => state.length > 0 && state.every(Boolean), [state]);
 
-  // 개별 토글
   const toggleOne = (index: number) => {
     setState(prev => prev.map((v, i) => (i === index ? !v : v)));
   };
 
-  // 전체 토글 (버튼 클릭 시에만 일괄 변경)
   const toggleAll = () => {
     const next = !agreeAll;
     setState(terms.map(() => next));
   };
 
   const handleNext = () => {
-    if (!agreeAll) return; // 전체 동의가 아닐 경우 아무 동작도 하지 않음
+    if (!agreeAll) return;
     router.push('/signup/complete');
   };
 

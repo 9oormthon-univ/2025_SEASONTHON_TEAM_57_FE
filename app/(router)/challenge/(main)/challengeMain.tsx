@@ -39,7 +39,7 @@ const challenges: challengeType[] = [
     createdAt: '2023-09-01',
     title: 'UX/UI 디자인',
     content: 'Figma로 와이어프레임/프로토타입 제작부터 사용자 경험 개선까지!',
-    image: '/figma.png',
+    image: '/image/3.png',
     challengeCategories: ['IT', '디자인'],
     startDate: '2023-10-01',
     endDate: '2023-10-30',
@@ -52,7 +52,7 @@ const challenges: challengeType[] = [
     createdAt: '2023-09-01',
     title: '하루 30분 영어회화',
     content: '매일 30분씩 영어로 대화하며 실전 감각 키우기!',
-    image: '/english.png',
+    image: '/image/5.png',
     challengeCategories: ['외국어', '어학'],
     startDate: '2023-10-01',
     endDate: '2023-10-30',
@@ -105,7 +105,6 @@ export default function ChallengeMain({ action }: Props) {
         <DateCalendar action={action} />
       </Wrapper32>
 
-      {/* main contents area */}
       <div className="flex flex-col mt-[2rem]">
         <Section>
           <Wrapper32>

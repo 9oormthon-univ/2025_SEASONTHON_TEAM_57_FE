@@ -84,7 +84,6 @@ export default function Home() {
 
   return (
     <>
-      {/* 섹션 1: 최근 재능 (clamp=2 기본) */}
       <section className="mt-[2rem]">
         <Wrapper32>
           <h2 className="flex items-center justify-between">
@@ -107,7 +106,6 @@ export default function Home() {
         </SectionWrapper>
       </section>
 
-      {/* 섹션 2: HOT 챌린지 (clamp=1) */}
       <section className="mt-[3.2rem]">
         <Wrapper32>
           <h3 className="flex items-center justify-between">
@@ -130,7 +128,6 @@ export default function Home() {
         </SectionWrapper>
       </section>
 
-      {/* 섹션 3: HOT 재능 공유 (clamp=1) */}
       <section className="mt-[3.2rem]">
         <Wrapper32>
           <h3 className="flex items-center justify-between">

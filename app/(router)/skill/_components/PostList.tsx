@@ -17,7 +17,7 @@ export type Post = {
 export default function PostList({
   posts,
   className = '',
-  imgIndex = 0, // 👈 부모가 준 인덱스
+  imgIndex = 0,
 }: {
   posts: Post[];
   className?: string;
@@ -29,7 +29,6 @@ export default function PostList({
     trade: '교환',
   };
 
-  // 0→1.png, 1→2.png, 2→3.png
   const imgSrc = `/image/${imgIndex + 1}.png`;
 
   return (

@@ -43,20 +43,16 @@ const typeOptions = [
   { label: '알려주기', value: 'teach' },
 ];
 
-// 서버는 숫자 ID 배열을 원함. UI는 문자열로 들고 있다가 제출 시 숫자 JSON으로 변환.
-
 const MAX_IMAGES = 5;
 
 export default function SkillUploadPage({ action }: Props) {
-  // 서버 액션 스펙
   const [type, setType] = useState<SkillType>('trade');
   const [title, setTitle] = useState('');
-  const [price, setPrice] = useState(''); // 문자열로 두고 서버에서 Number 처리
+  const [price, setPrice] = useState('');
   const [content, setContent] = useState('');
   const [learnCats, setLearnCats] = useState<string[]>([]);
   const [teachCats, setTeachCats] = useState<string[]>([]);
 
-  // 이미지 미리보기
   const [imagesPreview, setImagesPreview] = useState<string[]>([]);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const handlePick = () => fileInputRef.current?.click();
@@ -68,14 +64,13 @@ export default function SkillUploadPage({ action }: Props) {
     const sliced = files.slice(0, Math.max(0, remain));
     const nextUrls = sliced.map(f => URL.createObjectURL(f));
     setImagesPreview(prev => [...prev, ...nextUrls]);
-    e.target.value = ''; // 같은 파일 재선택 가능
+    e.target.value = '';
   };
 
   const removeImage = (idx: number) => {
     setImagesPreview(prev => prev.filter((_, i) => i !== idx));
   };
 
-  // 문자열[] -> 숫자[] -> JSON
   const toIdJson = (arr: string[]) =>
     JSON.stringify(
       arr
@@ -92,7 +87,6 @@ export default function SkillUploadPage({ action }: Props) {
         encType="multipart/form-data"
         className="mx-[3.2rem] py-6 flex flex-col gap-6"
       >
-        {/* ===== 폼 전송용 숨김 필드 (핵심) ===== */}
         <input
           type="hidden"
           name="type"
@@ -124,7 +118,6 @@ export default function SkillUploadPage({ action }: Props) {
           value={toIdJson(teachCats)}
         />
 
-        {/* ===== UI 컴포넌트 (name 없어도 됨; 숨김 필드로 제출) ===== */}
         <FieldWithEndSelect
           label="제목"
           placeholder="제목 입력"
@@ -134,7 +127,6 @@ export default function SkillUploadPage({ action }: Props) {
           selected={type}
           onSelect={v => setType(v as SkillType)}
           size="lg"
-          // name 전달은 UI 내부에서 쓰려면 유지 가능 (전송은 hidden이 담당)
         />
 
         <Field
@@ -249,7 +241,6 @@ export default function SkillUploadPage({ action }: Props) {
             </div>
           </div>
 
-          {/* 실제 제출되는 파일 input (form 내부 필수) */}
           <input
             ref={fileInputRef}
             type="file"
@@ -261,7 +252,6 @@ export default function SkillUploadPage({ action }: Props) {
           />
         </section>
 
-        {/* 제출 버튼 */}
         <button
           type="submit"
           className="mt-8 w-full h-[5.6rem] rounded-[1.2rem] bg-[var(--primary)] text-white btn1"

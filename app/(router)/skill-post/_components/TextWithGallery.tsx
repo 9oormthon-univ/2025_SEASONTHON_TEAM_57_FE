@@ -1,4 +1,3 @@
-// app/_components/TextWithGallery.tsx
 import clsx from 'clsx';
 import Image, { type StaticImageData } from 'next/image';
 
@@ -8,7 +7,6 @@ import Message from '@/public/post/message.svg';
 import SvgBox from './SvgBox';
 
 type GalleryImage = {
-  /** public/ 경로나 원격 URL (원격은 next.config.js에 domain 허용 필요) */
   src: string | StaticImageData;
   alt?: string;
 };
@@ -16,9 +14,7 @@ type GalleryImage = {
 type Props = {
   title: string;
   content: string;
-  /** 이미지가 없거나 빈 배열이면 자동으로 텍스트만 렌더링 */
   images?: GalleryImage[];
-  /** 컴포넌트 바깥 여백/배경 등을 커스터마이즈하고 싶을 때 */
   className?: string;
   ctn_bookmark?: number;
   ctn_message?: number;
@@ -36,14 +32,11 @@ export default function TextWithGallery({
 
   return (
     <section className={clsx('rounded-[1.2rem] pt-[2.0rem] space-y-[1.6rem]', className)}>
-      {/* 타이틀: H2 (global.css에서 h2 유틸이 태그에 자동 적용) */}
       <h2 className="text-[var(--black)]">{title}</h2>
 
-      {/* 이미지가 있을 때만 가로 스크롤 갤러리 */}
       {hasImages && (
         <div
           className={clsx(
-            // 컨테이너를 좌우로 살짝 꽉 차 보이게(-mx) 하고 패딩으로 균형
             'px-[2.0rem] py-[0.8rem]',
             'overflow-x-auto scrollbar-hidden',
             'flex gap-[1.2rem]',
@@ -57,7 +50,7 @@ export default function TextWithGallery({
               key={i}
               className={clsx(
                 'relative overflow-hidden rounded-[1.2rem]',
-                'h-[12.0rem] w-[18.0rem]', // 120px x 180px (가로 스크롤용 카드)
+                'h-[12.0rem] w-[18.0rem]',
                 'flex-shrink-0 snap-start'
               )}
             >
@@ -74,10 +67,8 @@ export default function TextWithGallery({
         </div>
       )}
 
-      {/* 본문: body2 유틸리티 사용 */}
       <p className="body2 text-[var(--black)] mb-[2rem]">{content}</p>
       <div className="flex items-center">
-        {/* 첫 번째 아이콘 + 숫자 */}
         <div className="flex items-center gap-[0.4rem]">
           <SvgBox
             Icon={Bookmark}
@@ -87,7 +78,6 @@ export default function TextWithGallery({
           <p className="body3 text-[var(--gray2)]">{ctn_bookmark}</p>
         </div>
 
-        {/* 두 번째 아이콘 + 숫자 (앞에 0.8rem 간격) */}
         <div className="flex items-center gap-[0.4rem] ml-[0.8rem]">
           <SvgBox
             Icon={Message}

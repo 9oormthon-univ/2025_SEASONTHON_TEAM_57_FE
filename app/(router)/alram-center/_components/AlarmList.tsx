@@ -9,7 +9,6 @@ export default function AlarmList() {
   const [items, setItems] = useState<AlarmItem[]>([]);
 
   useEffect(() => {
-    // 더미 데이터: API 연동 시 교체
     setItems([
       {
         id: '1',
@@ -52,7 +51,7 @@ export default function AlarmList() {
 
   return (
     <ul className="px-[32px] pb-8">
-      {items.map((item) => (
+      {items.map(item => (
         <li key={item.id}>
           <AlarmRow item={item} />
         </li>
