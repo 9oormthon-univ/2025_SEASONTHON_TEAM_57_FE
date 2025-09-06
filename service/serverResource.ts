@@ -3,6 +3,19 @@ import {
   RegisterUser,
   RefreshAccessToken,
   Logout,
+  SkillPost,
+  SkillCategoryPosts,
+  SkillCreate,
+  SkillDelete,
+  SkillEdit,
+  SkillRecommend,
+  MySkillPosts,
+  HotSkillPosts,
+  CommentCreate,
+  CommentDelete,
+  CommentEdit,
+  MyCommentList,
+  PostCommentList,
   GetApprovedChallenges,
   GetMyChallenges,
   GetPopularChallenges,
@@ -23,6 +36,19 @@ export interface APIResource {
   registerUser: RegisterUser;
   refreshAccessToken: RefreshAccessToken;
   logout: Logout;
+  skillPost: SkillPost;
+  skillCategoryPosts: SkillCategoryPosts;
+  skillCreate: SkillCreate;
+  skillDelete: SkillDelete;
+  skillEdit: SkillEdit;
+  skillRecommend: SkillRecommend;
+  mySkillPosts: MySkillPosts;
+  hotSkillPosts: HotSkillPosts;
+  commentCreate: CommentCreate;
+  commentDelete: CommentDelete;
+  commentEdit: CommentEdit;
+  myCommentList: MyCommentList;
+  postCommentList: PostCommentList;
   getApprovedChallenges: GetApprovedChallenges;
   getMyChallenges: GetMyChallenges;
   getPopularChallenges: GetPopularChallenges;

@@ -5,9 +5,10 @@ type SvgBoxProps = {
   size?: number;
   label?: string;
   className?: string;
+  viewBox?: string;
 };
 
-export default function SvgBox({ Icon, size = 24, label, className = '' }: SvgBoxProps) {
+export default function SvgBox({ Icon, size = 24, label, className = '', viewBox }: SvgBoxProps) {
   return (
     <span
       className={`inline-flex items-center justify-center shrink-0 ${className}`}
@@ -17,6 +18,7 @@ export default function SvgBox({ Icon, size = 24, label, className = '' }: SvgBo
       <Icon
         width={size}
         height={size}
+        {...(viewBox ? { viewBox } : {})}
         preserveAspectRatio="xMidYMid meet"
         className="block w-full h-full"
         aria-label={label}
