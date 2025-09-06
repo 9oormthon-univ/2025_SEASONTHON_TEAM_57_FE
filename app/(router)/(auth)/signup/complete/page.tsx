@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation';
 
-import { RegisterUser } from '@/service/authorization';
+import { GetAccessToken, RegisterUser } from '@/service/authorization';
 import { MemberInfo } from '@/service/interfaces';
 import { getCookie } from '@/utils/cookie';
 
@@ -24,8 +24,6 @@ export default async function SignupComplete() {
     const nickname = trimmedValue(nick);
     const realName = trimmedValue(name);
     const birthDate = trimmedValue(birth);
-
-    console.log('nickname:', nickname, 'email:', realName);
 
     if (!nickname || !realName || !birthDate) {
       redirect('/signup/complete?error=required');

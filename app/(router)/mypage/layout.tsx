@@ -16,7 +16,10 @@ export default function MyPageLayout({ children }: { children: React.ReactNode }
             icon: <Bell />,
             href: '/alram-center',
           },
-          { icon: <Award />, href: '/mypage/point' },
+          {
+            icon: <Award />,
+            href: '#',
+          },
         ]}
       />
 

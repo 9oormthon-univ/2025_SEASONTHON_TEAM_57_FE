@@ -26,6 +26,17 @@ export default function SkillSharePage() {
           defaultIndex={0}
           onChange={handleFilterChange}
         />
+
+        <div className="mt-6" />
+        <div className="flex items-center justify-between">
+          <h3 className="h3 text-[var(--black)] pl-[32px]">지금 Hot한 재능</h3>
+          <MoreLink href="/hot" />
+        </div>
+
+        <HotCarousel
+          items={hotCards}
+          className="mt-3"
+        />
       </div>
 
       <div className="flex items-center justify-between mt-[2.0rem] mb-[10px]">
