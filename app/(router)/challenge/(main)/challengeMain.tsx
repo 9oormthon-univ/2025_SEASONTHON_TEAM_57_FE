@@ -3,16 +3,20 @@
 import { useEffect, useState } from 'react';
 
 import CategoryChips from '@/components/category/categoryChips';
-import { MoreLink } from '@/components/more';
 import PostButton from '@/components/postButton';
 
 import Wrapper32 from '@/components/wrapper32';
+import { CertificatingType } from '@/service/interfaces';
 import { challengeType } from '@/service/interfaces/challenge';
 
-import DateCalendar from './_components/calendar';
-import ChallengeCard from './_components/challenge';
+import DateCalendar from '../_components/calendar';
+import ChallengeCard from '../_components/challenge';
 
-export default function ChallengePage() {
+export type Props = {
+  action: (param: { year: number; month: number }) => Promise<CertificatingType[] | undefined>;
+};
+
+export default function ChallengeMain({ action }: Props) {
   const [category, setCategory] = useState<number>(0);
   const [participating, setParticipating] = useState<challengeType[]>([]);
   const [challenges, setChallenges] = useState<challengeType[]>([]);
@@ -55,7 +59,7 @@ export default function ChallengePage() {
   return (
     <>
       <Wrapper32>
-        <DateCalendar />
+        <DateCalendar action={action} />
       </Wrapper32>
 
       {/* main contents area */}

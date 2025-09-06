@@ -16,6 +16,7 @@ type InputProps = BaseProps & {
   type?: React.HTMLInputTypeAttribute;
   value?: string;
   onChange?: (v: string) => void;
+  name: string;
 };
 
 type TextareaProps = BaseProps & {
@@ -23,10 +24,11 @@ type TextareaProps = BaseProps & {
   minH?: string;
   value?: string;
   onChange?: (v: string) => void;
+  name: string;
 };
 
 export default function Field(props: InputProps | TextareaProps) {
-  const { label, placeholder, className, size = 'md', required } = props;
+  const { label, placeholder, className, size = 'lg', required } = props;
 
   const heightClass =
     typeof size === 'string'
@@ -45,7 +47,7 @@ export default function Field(props: InputProps | TextareaProps) {
   return (
     <div className={clsx('flex flex-col gap-2', className)}>
       {label && (
-        <label className="body3 text-[var(--gray4)]">
+        <label className="body3">
           {label} {required && <span className="text-[var(--primary)]">*</span>}
         </label>
       )}
@@ -56,6 +58,7 @@ export default function Field(props: InputProps | TextareaProps) {
           style={{ backgroundColor: 'var(--bg-main)' }}
           placeholder={placeholder}
           value={props.value}
+          name={props.name}
           onChange={e => props.onChange?.(e.target.value)}
         />
       ) : (
@@ -64,6 +67,7 @@ export default function Field(props: InputProps | TextareaProps) {
           className={clsx(commonClass, heightClass)}
           placeholder={placeholder}
           value={props.value}
+          name={props.name}
           onChange={e => (props as InputProps).onChange?.(e.target.value)}
         />
       )}

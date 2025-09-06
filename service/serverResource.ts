@@ -15,6 +15,7 @@ import {
   GetMyCertificatingByChallenge,
   GetMyCertificatingByDate,
   GetParticipatingMember,
+  PostChallenge,
 } from './interfaces';
 
 export interface APIResource {
@@ -34,4 +35,5 @@ export interface APIResource {
   getMyCertificatingByChallenge: GetMyCertificatingByChallenge;
   getMyCertificatingByDate: GetMyCertificatingByDate;
   getParticipatingMember: GetParticipatingMember;
+  postChallenge: PostChallenge;
 }

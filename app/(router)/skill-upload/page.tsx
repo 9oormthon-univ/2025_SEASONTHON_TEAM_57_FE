@@ -1,11 +1,13 @@
 'use client';
 
+import Image from 'next/image';
 import React, { useMemo, useRef, useState } from 'react';
 
 import Field from '@/components/Field/Field';
 import FieldWithEndSelect from '@/components/Field/FieldWithEndSelect';
 import FullWidthSelect from '@/components/Field/FullWidthSelect';
-import Picture from '@/public/icons/picture.svg';
+
+import Camera from '@icons/camera.svg';
 
 // SVGR 아이콘
 
@@ -28,7 +30,11 @@ function SvgBox({
       className={`inline-flex items-center justify-center bg-white border border-[var(--gray2)] rounded-[1.2rem] shadow-sm ${className}`}
       style={{ width: box, height: box }}
     >
-      <Icon viewBox={vb} preserveAspectRatio="xMidYMid meet" className="w-full h-full block" />
+      <Icon
+        viewBox={vb}
+        preserveAspectRatio="xMidYMid meet"
+        className="block w-full h-full"
+      />
     </span>
   );
 }
@@ -61,9 +67,6 @@ export default function SkillUploadPage() {
   const [images, setImages] = useState<string[]>([]);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const ICON_BOX = 48;
-  const iconSize = useMemo(() => ICON_BOX * 0.6, []); // (참고용) 필요 시 조절
-
   const handlePick = () => fileInputRef.current?.click();
 
   const handleFiles = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -83,7 +86,7 @@ export default function SkillUploadPage() {
   };
 
   return (
-    <main className="bg-main min-h-screen">
+    <main className="min-h-screen bg-main">
       <div className="mx-[3.2rem] py-6 flex flex-col gap-6">
         {/* 1) 제목 + 오른쪽 작은 드롭다운 */}
         <FieldWithEndSelect
@@ -102,12 +105,20 @@ export default function SkillUploadPage() {
           label="교환 기간"
           placeholder="기간 입력"
           value={period}
+          name="period"
           onChange={setPeriod}
           size="lg"
         />
 
         {/* 3) 가격 */}
-        <Field label="가격" placeholder="가격 입력" value={price} onChange={setPrice} size="lg" />
+        <Field
+          label="가격"
+          placeholder="가격 입력"
+          value={price}
+          name="price"
+          onChange={setPrice}
+          size="lg"
+        />
 
         {/* 4) 내용 */}
         <Field
@@ -115,6 +126,7 @@ export default function SkillUploadPage() {
           label="내용"
           placeholder="추가하고 싶은 내용 입력"
           value={content}
+          name="content"
           onChange={setContent}
           minH="min-h-[200px]"
         />
@@ -141,7 +153,7 @@ export default function SkillUploadPage() {
                 className="focus:outline-none"
               >
                 {/* viewBox는 svg 파일의 값과 동일하게 지정 (예: 0 0 60 60) */}
-                <SvgBox Icon={Picture} box={ICON_BOX} vb="0 0 60 60" />
+                <Camera />
               </button>
               <span className="caption mt-2 text-[var(--gray4)]">
                 {`사진 ${images.length}/${MAX_IMAGES}`}
@@ -152,8 +164,11 @@ export default function SkillUploadPage() {
             <div className="flex-1 overflow-x-auto scrollbar-hidden">
               <ul className="flex items-center gap-4 pr-1">
                 {images.map((src, idx) => (
-                  <li key={src} className="relative">
-                    <img
+                  <li
+                    key={src}
+                    className="relative"
+                  >
+                    <Image
                       src={src}
                       alt={`선택한 사진 ${idx + 1}`}
                       className="w-[88px] h-[88px] object-cover rounded-[1.2rem] border border-[var(--gray2)] bg-white"

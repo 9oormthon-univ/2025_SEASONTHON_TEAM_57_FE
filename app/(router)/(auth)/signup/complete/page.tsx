@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation';
 
-import { GetAccessToken, RegisterUser } from '@/service/authorization';
+import { RegisterUser } from '@/service/authorization';
 import { MemberInfo } from '@/service/interfaces';
 import { getCookie } from '@/utils/cookie';
 
