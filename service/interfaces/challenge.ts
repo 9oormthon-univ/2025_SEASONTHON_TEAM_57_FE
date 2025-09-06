@@ -1,6 +1,7 @@
 import { ProgressStatus, ReviewStatus } from '@/constants/types';
 
 export interface challengeType {
+  challengeId: number;
   author: string;
   title: string;
   content: string;
@@ -16,7 +17,7 @@ export interface challengeType {
 export interface postChallengeType {
   title: string;
   content: string;
-  image: string;
+  // image: string[];
   startDate: string;
   endDate: string;
   categoryIds: number[];

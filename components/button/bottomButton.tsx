@@ -1,6 +1,7 @@
 'use client';
 
 import clsx from 'clsx';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 import Modal from '@/components/modal/modal';
@@ -16,6 +17,7 @@ export default function BottomButton({
     buttonText: string;
     disabled?: boolean;
     onClick?: () => void;
+    href?: string;
   };
   modal?: {
     formId: string;
@@ -24,6 +26,7 @@ export default function BottomButton({
   };
   description?: string;
 }>) {
+  const router = useRouter();
   const [open, setOpen] = useState<boolean>(false);
 
   return (
@@ -41,7 +44,13 @@ export default function BottomButton({
             </div>
           )}
           <ButtonBox
-            onClick={modal ? () => setOpen(true) : button.onClick}
+            onClick={
+              button && button.href !== undefined
+                ? () => button.href && router.push(button.href)
+                : modal
+                ? () => setOpen(true)
+                : button.onClick
+            }
             bgColor="var(--primary)"
             className="max-w-[43.6rem] text-white"
             disabled={button.disabled}

@@ -1,8 +1,12 @@
 export interface CertificatingType {
-  challengeId: number;
-  title: string;
-  images: string[];
-  createDate: string;
+  date: string; // "2025-09-06"
+  totalCont: number; // 1073741824
+  items: {
+    author: string; // "홍길동"
+    title: string; // "영어 7일 챌린지"
+    images: string; // "[https://example.com/image1.png,https://example.com/image2.png]"
+    createDate: string; // "2025-09-08"
+  }[];
 }
 
 export interface Certificating {
