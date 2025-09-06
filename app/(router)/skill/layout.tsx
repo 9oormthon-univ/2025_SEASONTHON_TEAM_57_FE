@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 
 import Header from '@/components/layout/header';
@@ -9,10 +7,13 @@ export default function SkillLayout({ children }: { children: React.ReactNode })
   return (
     <div className="h-screen bg-main">
       <Header
-        title="재능공유"
+        left={{
+          title: '재능공유',
+        }}
         right={[
           {
             icon: <Bell />,
+            href: '/alram-center',
           },
         ]}
       />

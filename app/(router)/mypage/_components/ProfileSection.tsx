@@ -19,12 +19,12 @@ export default function ProfileSection() {
           />
         </div>
 
-        <button
-          className="absolute right-1 bottom-1 h-9 w-9 rounded-full border border-[var(--gray2)] shadow-md flex items-center justify-center z-10 bg-transparent"
-          aria-label="프로필 수정"
-        >
-          <SvgBox Icon={ProfileEdit} size={24} />
-        </button>
+        <div className="absolute right-1 bottom-1 h-9 w-9 rounded-full border border-[var(--gray2)] shadow-md flex items-center justify-center z-10 bg-transparent">
+          <SvgBox
+            Icon={ProfileEdit}
+            size={40}
+          />
+        </div>
       </div>
 
       <h2 className="h2 text-[var(--black)]">홍길동</h2>
