@@ -25,7 +25,7 @@ export async function GET(req: NextRequest) {
     } else {
       return NextResponse.json(await GETSkillCategoryPosts(categoryId));
     }
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: 'An error occurred while fetching data' }, { status: 500 });
   }
 }

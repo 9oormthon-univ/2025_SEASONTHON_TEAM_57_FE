@@ -43,6 +43,7 @@ export interface PostCommentList {
     postId: number;
   };
   res: {
+    data: any;
     comments: CommentList[];
   };
 }
