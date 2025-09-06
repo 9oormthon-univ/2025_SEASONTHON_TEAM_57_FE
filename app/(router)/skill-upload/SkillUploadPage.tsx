@@ -5,6 +5,7 @@ import React, { useRef, useState } from 'react';
 import Field from '@/components/Field/Field';
 import FieldWithEndSelect from '@/components/Field/FieldWithEndSelect';
 import FullWidthSelect from '@/components/Field/FullWidthSelect';
+import { categoryOptions } from '@/constants';
 import Picture from '@/public/icons/picture.svg';
 
 type Props = { action: (formData: FormData) => Promise<void> };
@@ -43,14 +44,6 @@ const typeOptions = [
 ];
 
 // 서버는 숫자 ID 배열을 원함. UI는 문자열로 들고 있다가 제출 시 숫자 JSON으로 변환.
-const categoryOptions = [
-  { categoryId: 1, label: '창의 · 예술', value: '1' },
-  { categoryId: 2, label: '라이프스타일', value: '2' },
-  { categoryId: 3, label: '스포츠 · 웰빙', value: '3' },
-  { categoryId: 4, label: '언어 · 학습', value: '4' },
-  { categoryId: 5, label: 'IT · 디지털', value: '5' },
-  { categoryId: 6, label: '자기계발', value: '6' },
-];
 
 const MAX_IMAGES = 5;
 

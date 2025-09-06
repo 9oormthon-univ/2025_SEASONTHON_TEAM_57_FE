@@ -1,42 +1,25 @@
 'use client';
 
-import Image from 'next/image';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 
+import BottomButton from '@/components/button/bottomButton';
 import Field from '@/components/Field/Field';
+import FullWidthSelect from '@/components/Field/FullWidthSelect';
 
 import ImagesInput from '@/components/input/imgeInput';
-import { MAX_IMAGES } from '@/constants';
-
-import Camera from '@icons/camera.svg';
+import { categoryOptions } from '@/constants';
 
 type Props = { action: (formData: FormData) => Promise<void> };
 
 export default function PostChallengeClient({ action }: Props) {
-  const fileInputRef = useRef<HTMLInputElement>(null);
-  const [images, setImages] = useState<string[]>([]);
+  const [categoryIds, setCategoryIds] = useState<string[]>([]);
 
-  const removeImage = (idx: number) => {
-    setImages(prev => prev.filter((_, i) => i !== idx));
-  };
-
-  const handlePick = () => fileInputRef.current?.click();
-
-  const handleFiles = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = Array.from(e.target.files ?? []);
-    if (!files.length) return;
-
-    const remain = MAX_IMAGES - images.length;
-    const sliced = files.slice(0, Math.max(0, remain));
-    const nextUrls = sliced.map(f => URL.createObjectURL(f));
-    setImages(prev => [...prev, ...nextUrls]);
-
-    e.target.value = ''; // 같은 파일 재선택을 위해 초기화
-  };
+  const commonClass =
+    'w-full rounded-[1.2rem] mt-[.4rem] px-[1.2rem] h-[5.2rem] border border-solid border-[var(--gray2)] bg-[var(--bg-main)] px-[1.6rem] body3 placeholder-[var(--gray2)] focus:border-[var(--black)] outline-none';
 
   return (
     <form
-      id="postChallenge"
+      id="postChallengeForm"
       action={action}
       className="flex flex-col gap-[2rem] mt-[2.8rem] mx-[3.2rem]"
     >
@@ -46,11 +29,24 @@ export default function PostChallengeClient({ action }: Props) {
         name="challengeTitle"
       />
 
-      <Field
-        label="모집기간"
-        placeholder="모집기간 입력"
-        name="chellenegePeriod"
-      />
+      <div className="grid grid-cols-2 gap-[1.2rem]">
+        <div>
+          <div className="body3">시작일</div>
+          <input
+            type="date"
+            name="challengeStartDate"
+            className={commonClass}
+          />
+        </div>
+        <div>
+          <div className="body3">종료일</div>
+          <input
+            type="date"
+            name="challengeEndDate"
+            className={commonClass}
+          />
+        </div>
+      </div>
 
       <Field
         label="내용"
@@ -59,9 +55,34 @@ export default function PostChallengeClient({ action }: Props) {
         as="textarea"
       />
 
+      <FullWidthSelect
+        label="카테고리"
+        placeholder="카테고리 선택"
+        options={categoryOptions}
+        values={categoryIds}
+        onChange={setCategoryIds}
+        size="lg"
+        className="relative z-10"
+      />
+
+      <input
+        type="hidden"
+        name="categoryIds"
+        value={categoryIds}
+      />
+
       <ImagesInput
         name="challengePhotos"
         max={5}
+      />
+
+      <BottomButton
+        button={{ buttonText: '업로드', href: '/challenge/post-check' }}
+        modal={{
+          title: '이 정보로 업로드 하시겠어요?',
+          loadingText: '반영 중입니다.',
+          formId: 'postChallengeForm',
+        }}
       />
     </form>
   );

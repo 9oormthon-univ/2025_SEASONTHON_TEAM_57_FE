@@ -62,7 +62,7 @@ export const PostChallenge = async (params: postChallengeType) => {
       {
         title: params.title,
         content: params.content,
-        image: params.image,
+        // image: params.image,
         startDate: params.startDate,
         endDate: params.endDate,
         categoryIds: params.categoryIds,

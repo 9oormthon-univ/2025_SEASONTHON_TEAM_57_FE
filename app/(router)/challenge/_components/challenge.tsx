@@ -1,16 +1,20 @@
 import Image from 'next/image';
 
-import { challengeType } from '@/service/interfaces/challenge';
+import Link from 'next/link';
 
+import { challengeType } from '@/service/interfaces/challenge';
 export default function ChallengeCard({ value }: { value: challengeType }) {
   const { challengeCategories, title, content, image } = value;
 
   return (
-    <div className="py-[1.2rem] border-b border-[var(--gray2)]">
+    <Link
+      href={'/challenge/1'}
+      className="py-[1.2rem] border-b border-[var(--gray2)]"
+    >
       <div className="flex gap-[1.2rem] items-center">
         <Image
           src={image}
-          alt={title}
+          alt={'asdf'}
           width={60}
           height={60}
           className="rounded-[1.2rem]"
@@ -21,6 +25,6 @@ export default function ChallengeCard({ value }: { value: challengeType }) {
         </div>
       </div>
       <div className="mt-[.8rem] text-right text-gray3">{challengeCategories.join(' / ')}</div>
-    </div>
+    </Link>
   );
 }

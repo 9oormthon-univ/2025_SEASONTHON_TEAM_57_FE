@@ -1,0 +1,18 @@
+.bg {
+  background-image: url('/icons/main.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.maintext {
+  color: var(--White, #fff);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 140%; /* 44.8px */
+  letter-spacing: -0.8px;
+  margin-bottom: 5px;
+}
