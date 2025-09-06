@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 
 import Header from '@/components/layout/header';
@@ -10,7 +8,9 @@ export default function MyPageLayout({ children }: { children: React.ReactNode }
   return (
     <div>
       <Header
-        title="마이페이지"
+        left={{
+          title: '마이페이지',
+        }}
         right={[
           {
             icon: <Bell />,
