@@ -33,10 +33,11 @@ export default async function SignupComplete() {
 
     try {
       await RegisterUser({ nickname, realName, birthDate });
-      redirect('/');
     } catch (error) {
       redirect(`/signup/complete?error=${(error as Error).message}`);
     }
+
+    redirect('/');
   }
 
   const memberInfo_cookie = await getCookie('member_info');

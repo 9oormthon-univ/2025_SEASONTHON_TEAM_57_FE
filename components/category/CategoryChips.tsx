@@ -37,7 +37,7 @@ const FIXED_CATEGORIES: Cat[] = [
 const CATEGORY_VIEWBOX = '0 0 60 60';
 
 export default function CategoryChips({
-  categories: _ignored,
+  categories,
   activeIndex = 0,
   className = '',
   onSelect,
@@ -54,7 +54,10 @@ export default function CategoryChips({
           const active = idx === activeIndex;
 
           return (
-            <li key={label} className="shrink-0">
+            <li
+              key={label}
+              className="shrink-0"
+            >
               <button
                 type="button"
                 onClick={() => onSelect?.(idx)}
@@ -94,7 +97,10 @@ export default function CategoryChips({
           );
         })}
 
-        <li aria-hidden className="shrink-0 w-[3.2rem]" />
+        <li
+          aria-hidden
+          className="shrink-0 w-[3.2rem]"
+        />
       </ul>
     </div>
   );

@@ -16,6 +16,7 @@ type InputProps = BaseProps & {
   type?: React.HTMLInputTypeAttribute;
   value?: string;
   onChange?: (v: string) => void;
+  disabled?: boolean;
 };
 
 type TextareaProps = BaseProps & {
@@ -23,10 +24,11 @@ type TextareaProps = BaseProps & {
   minH?: string;
   value?: string;
   onChange?: (v: string) => void;
+  disabled?: boolean;
 };
 
 export default function Field(props: InputProps | TextareaProps) {
-  const { label, placeholder, className, size = 'md', required } = props;
+  const { label, placeholder, className, size = 'md', required, disabled } = props;
 
   const heightClass =
     typeof size === 'string'
@@ -52,19 +54,29 @@ export default function Field(props: InputProps | TextareaProps) {
 
       {props.as === 'textarea' ? (
         <textarea
-          className={clsx(commonClass, props.minH ?? 'min-h-[160px] py-[1.6rem]')}
+          className={clsx(
+            commonClass,
+            props.minH ?? 'min-h-[160px] py-[1.6rem]',
+            disabled ? 'disabled:text-[#111]' : ''
+          )}
           style={{ backgroundColor: 'var(--bg-main)' }}
           placeholder={placeholder}
           value={props.value}
           onChange={e => props.onChange?.(e.target.value)}
+          disabled={disabled}
         />
       ) : (
         <input
           type={props.type ?? 'text'}
-          className={clsx(commonClass, heightClass)}
+          className={clsx(
+            commonClass,
+            heightClass,
+            disabled ? 'disabled:text-[#111] disabled:bg-gray2' : ''
+          )}
           placeholder={placeholder}
           value={props.value}
           onChange={e => (props as InputProps).onChange?.(e.target.value)}
+          disabled={disabled}
         />
       )}
     </div>

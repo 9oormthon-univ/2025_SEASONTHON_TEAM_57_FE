@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 
 import Header from '@/components/layout/header';
@@ -10,22 +8,15 @@ export default function MyPageLayout({ children }: { children: React.ReactNode }
   return (
     <div>
       <Header
-        title="마이페이지"
-        rightItems={[
-          <button
-            key="award"
-            aria-label="수상(?)"
-            className="h-10 w-10 rounded-full hover:bg-white/50 active:opacity-90"
-          >
-            <Award width={24} height={24} />
-          </button>,
-          <button
-            key="bell"
-            aria-label="알림"
-            className="h-10 w-10 rounded-full hover:bg-white/50 active:opacity-90"
-          >
-            <Bell width={24} height={24} />
-          </button>,
+        left={{
+          title: '마이페이지',
+        }}
+        right={[
+          {
+            icon: <Bell />,
+            href: '/alram-center',
+          },
+          { icon: <Award />, href: '/mypage/point' },
         ]}
       />
 

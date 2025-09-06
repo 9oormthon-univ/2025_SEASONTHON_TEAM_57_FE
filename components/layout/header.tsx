@@ -1,49 +1,95 @@
 'use client';
 
 import clsx from 'clsx';
-import React from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { ReactNode } from 'react';
 
-type HeaderProps = {
+type Action = {
+  icon?: ReactNode;
+  onClick?: () => void;
+  href?: string;
+  disabled?: boolean;
   title?: string;
-  left?: React.ReactNode;
-  rightItems?: React.ReactNode[];
-  className?: string;
-  sticky?: boolean;
 };
 
-export default function Header({
-  title,
-  left,
-  rightItems = [],
-  className,
-  sticky = true,
-}: HeaderProps) {
+export interface HeaderProps {
+  title?: ReactNode;
+  left?: Action;
+  right?: Action[];
+  className?: string;
+}
+
+export default function Header({ title, left, right, className }: HeaderProps) {
   return (
     <header
-      className={clsx(
-        'z-50 bg-main/95 backdrop-blur pl-[3.2rem] pr-[3.2rem] h-[6.4rem] flex items-center',
-        sticky && 'sticky top-0',
-        className
-      )}
+      className={clsx('w-full bg-main backdrop-blur', 'sticky top-0 z-50', className)}
+      role="banner"
     >
-      <div className="flex items-center justify-between w-full">
-        <div className="min-w-0">
-          {left ? left : title ? <h2 className="h2 text-[var(--black)]">{title}</h2> : null}
+      <div className="grid grid-cols-[1fr_auto_1fr] items-center h-24 px-[3.2rem]">
+        {/* Left */}
+        <div className="min-w-0 justify-self-start">
+          {left ? (
+            <ActionButton
+              action={left}
+              align="left"
+            />
+          ) : null}
         </div>
 
-        {rightItems.length > 0 && (
-          <div className="flex items-center gap-[2rem] flex-row-reverse">
-            {rightItems.map((node, idx) => (
-              <span
-                key={idx}
-                className="inline-flex items-center justify-center shrink-0"
-              >
-                {node}
-              </span>
+        {/* Center */}
+        <div className="min-w-0 text-center justify-self-center">
+          {title ? (
+            <div className="mx-auto max-w-[min(80vw,48rem)] body1 truncate">{title}</div>
+          ) : null}
+        </div>
+
+        {/* Right */}
+        <div className="min-w-0 justify-self-end">
+          <div className="flex items-center gap-[2rem]">
+            {(right ?? []).slice(0, 2).map((a, i) => (
+              <ActionButton
+                key={i}
+                action={a}
+                align="right"
+              />
             ))}
           </div>
-        )}
+        </div>
       </div>
     </header>
+  );
+}
+
+function ActionButton({ action, align }: { action: Action; align?: 'left' | 'right' }) {
+  const common = 'flex items-center justify-center transition';
+  const className = clsx(common, align === 'left' ? 'justify-start' : 'justify-end');
+
+  const router = useRouter();
+
+  if (action.title) {
+    return <h2>{action.title}</h2>;
+  }
+
+  if (action.href && !action.disabled) {
+    return (
+      <Link
+        href={action.href}
+        className={className}
+      >
+        {action.icon}
+      </Link>
+    );
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={align === 'left' ? () => router.back() : action.onClick}
+      className={className}
+      disabled={action.disabled}
+    >
+      {action.icon}
+    </button>
   );
 }

@@ -7,6 +7,8 @@ export type TermsState = Record<string, boolean>;
 
 export type Gender = 'male' | 'female';
 
+export type SkillType = 'learn' | 'teach' | 'trade';
+
 // FOR API
 
 export interface APIResponse<T> {
