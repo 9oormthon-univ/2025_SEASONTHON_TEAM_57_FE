@@ -10,7 +10,7 @@ export interface challengeType {
   startDate: string;
   endDate: string;
   createdAt: string;
-  challengeCategories: string;
+  challengeCategories: string[];
 }
 
 export interface PostChallenge {

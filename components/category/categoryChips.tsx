@@ -40,7 +40,7 @@ const CATEGORY_VIEWBOX = '0 0 60 60';
 export default function CategoryChips({ activeIndex = 0, className = '', onSelect }: Props) {
   return (
     <div className={clsx('overflow-x-auto scrollbar-hidden', className)}>
-      <ul className="flex gap-[2rem] pr-0">
+      <ul className="flex gap-[2rem] pr-0 mx-[3.2rem]">
         {FIXED_CATEGORIES.map(({ id, label, Icon }) => {
           const active = id === activeIndex;
 
@@ -53,7 +53,10 @@ export default function CategoryChips({ activeIndex = 0, className = '', onSelec
                 type="button"
                 onClick={() => onSelect(id)}
                 aria-pressed={active}
-                className="flex flex-col w-[8.2rem] items-center gap-[.4rem] focus:outline-none"
+                className={clsx(
+                  'flex flex-col w-[8.2rem] items-center gap-[.4rem] focus:outline-none',
+                  id === 6 ? 'mr-[3.2rem]' : ''
+                )}
               >
                 <span
                   className={clsx(

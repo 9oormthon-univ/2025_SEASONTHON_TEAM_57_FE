@@ -8,6 +8,10 @@ const nextConfig: NextConfig = {
         protocol: 'http',
         hostname: 'img1.kakaocdn.net',
       },
+      {
+        protocol: 'https',
+        hostname: 'api.wownd.store',
+      },
     ],
   },
   turbopack: {

@@ -12,8 +12,10 @@ export default function HotChallengeCard({
   return (
     <ShadowBox
       className={clsx(
-        'grid',
-        clamp ? ' grid-rows-[12rem_6rem] min-w-[20rem]' : 'grid-rows-[16rem_8rem] min-w-[24rem]'
+        'grid h-fit',
+        clamp !== 2
+          ? ' grid-rows-[12rem_6rem] min-w-[20rem]'
+          : 'grid-rows-[16rem_8rem] min-w-[24rem]'
       )}
     >
       <div className="inner-shadow bg-[#99FF95] rounded-[1.6rem] p-[1.2rem] border-[.5rem] border-white">
@@ -28,7 +30,7 @@ export default function HotChallengeCard({
         <div
           className="caption !leading-[150%]"
           style={
-            clamp
+            clamp !== 2
               ? {
                   overflow: 'hidden',
                   display: '-webkit-box',

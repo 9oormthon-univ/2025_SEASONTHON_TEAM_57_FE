@@ -6,6 +6,7 @@ import CategoryChips from '@/components/category/categoryChips';
 import { MoreLink } from '@/components/more';
 import PostButton from '@/components/postButton';
 
+import Wrapper32 from '@/components/wrapper32';
 import { challengeType } from '@/service/interfaces/challenge';
 
 import DateCalendar from './_components/calendar';
@@ -53,14 +54,18 @@ export default function ChallengePage() {
 
   return (
     <>
-      <DateCalendar />
+      <Wrapper32>
+        <DateCalendar />
+      </Wrapper32>
 
       {/* main contents area */}
       <div className="flex flex-col mt-[2rem]">
         <Section>
-          <h3 className="flex items-center">
-            <span>카테고리</span>
-          </h3>
+          <Wrapper32>
+            <h3 className="flex items-center">
+              <span>카테고리</span>
+            </h3>
+          </Wrapper32>
           <CategoryChips
             className="mt-[1.2rem]"
             activeIndex={category}
@@ -69,19 +74,20 @@ export default function ChallengePage() {
         </Section>
 
         <Section>
-          <h3 className="flex items-center justify-between">
-            <span>OO님이 진행중인 챌린지</span>
-            <MoreLink href="#" />
-          </h3>
-          <div className="mt-[1.2rem]">
-            {challenges.length > 0 &&
-              challenges.map((challenge, i) => (
-                <ChallengeCard
-                  key={i}
-                  value={challenge}
-                />
-              ))}
-          </div>
+          <Wrapper32>
+            <h3 className="flex items-center justify-between">
+              <span>OO님이 진행중인 챌린지</span>
+            </h3>
+            <div className="mt-[1.2rem]">
+              {challenges.length > 0 &&
+                challenges.map((challenge, i) => (
+                  <ChallengeCard
+                    key={i}
+                    value={challenge}
+                  />
+                ))}
+            </div>
+          </Wrapper32>
         </Section>
       </div>
 

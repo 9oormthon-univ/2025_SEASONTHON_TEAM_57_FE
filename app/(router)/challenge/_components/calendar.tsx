@@ -108,6 +108,25 @@ export default function DateCalendar() {
     setShowYearModal(false);
   };
 
+  useEffect(() => {
+    const fetchCalendarData = async () => {
+      try {
+        const response = await fetch(
+          `/api/challenge/calendar?year=${today.year()}&month=${today.month() + 1}`
+        );
+        if (!response.ok) {
+          throw new Error('Failed to fetch calendar data');
+        }
+        const data = (await response.json()) as CalendarData[];
+        console.log('캘린더 데이터:', data);
+        setCalendarData(data);
+      } catch (error) {
+        console.error('Error fetching calendar data:', error);
+      }
+    };
+    fetchCalendarData();
+  }, [today]);
+
   return (
     <ShadowBox>
       {/* Date Calendar */}

@@ -27,7 +27,7 @@ export default function HomeLayout({
           },
         ]}
       />
-      <main className="mx-[3.2rem] mt-[2.2rem] mb-[8rem]">{children}</main>
+      <main className="mt-[2.2rem] mb-[8rem]">{children}</main>
     </>
   );
 }
