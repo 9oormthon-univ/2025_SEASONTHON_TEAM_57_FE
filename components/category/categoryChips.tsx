@@ -1,7 +1,7 @@
 'use client';
 
 import clsx from 'clsx';
-import React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 
 import Art from '@/public/icons/category/art.svg';
 import IT from '@/public/icons/category/it.svg';
@@ -14,44 +14,35 @@ type Props = {
   categories?: string[];
   activeIndex?: number;
   className?: string;
-  onSelect?: (idx: number) => void;
+  onSelect: Dispatch<SetStateAction<number>>;
 
   boxSize?: number;
   iconPaddingRatio?: number;
 };
 
 type Cat = {
+  id: number;
   label: string;
   Icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
 };
 
 const FIXED_CATEGORIES: Cat[] = [
-  { label: '창의 · 예술', Icon: Art },
-  { label: '라이프스타일', Icon: Lifestyle },
-  { label: '스포츠 · 웰빙', Icon: Sports },
-  { label: '언어 · 학습', Icon: Language },
-  { label: 'IT · 디지털', Icon: IT },
-  { label: '자기계발', Icon: SelfDev },
+  { id: 1, label: '창의 · 예술', Icon: Art },
+  { id: 2, label: '라이프스타일', Icon: Lifestyle },
+  { id: 3, label: '스포츠 · 웰빙', Icon: Sports },
+  { id: 4, label: '언어 · 학습', Icon: Language },
+  { id: 5, label: 'IT · 디지털', Icon: IT },
+  { id: 6, label: '자기계발', Icon: SelfDev },
 ];
 
 const CATEGORY_VIEWBOX = '0 0 60 60';
 
-export default function CategoryChips({
-  categories,
-  activeIndex = 0,
-  className = '',
-  onSelect,
-  boxSize = 64,
-  iconPaddingRatio = 0.12,
-}: Props) {
-  const pad = Math.max(4, Math.round(boxSize * iconPaddingRatio));
-  const iconPx = Math.max(20, boxSize - pad * 2);
-
+export default function CategoryChips({ activeIndex = 0, className = '', onSelect }: Props) {
   return (
     <div className={clsx('overflow-x-auto scrollbar-hidden', className)}>
-      <ul className="flex gap-[2.0rem] pl-[3.2rem] pr-0">
-        {FIXED_CATEGORIES.map(({ label, Icon }, idx) => {
-          const active = idx === activeIndex;
+      <ul className="flex gap-[2rem] pr-0">
+        {FIXED_CATEGORIES.map(({ id, label, Icon }) => {
+          const active = id === activeIndex;
 
           return (
             <li
@@ -60,9 +51,9 @@ export default function CategoryChips({
             >
               <button
                 type="button"
-                onClick={() => onSelect?.(idx)}
+                onClick={() => onSelect(id)}
                 aria-pressed={active}
-                className="group flex w-[8.0rem] flex-col items-center gap-2 focus:outline-none"
+                className="flex flex-col w-[8.2rem] items-center gap-[.4rem] focus:outline-none"
               >
                 <span
                   className={clsx(
@@ -71,14 +62,9 @@ export default function CategoryChips({
                       ? 'bg-white border-[var(--black)]'
                       : 'bg-white border-[var(--gray1)] hover:border-[var(--black)]'
                   )}
-                  style={{ width: boxSize, height: boxSize }}
                 >
                   <Icon
-                    width={iconPx}
-                    height={iconPx}
                     viewBox={CATEGORY_VIEWBOX}
-                    preserveAspectRatio="xMidYMid meet"
-                    style={{ display: 'block' }}
                     aria-hidden
                     focusable="false"
                   />
@@ -96,11 +82,6 @@ export default function CategoryChips({
             </li>
           );
         })}
-
-        <li
-          aria-hidden
-          className="shrink-0 w-[3.2rem]"
-        />
       </ul>
     </div>
   );

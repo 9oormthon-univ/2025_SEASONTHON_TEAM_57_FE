@@ -42,7 +42,7 @@ export default function Field(props: InputProps | TextareaProps) {
       : 'h-[52px]';
 
   const commonClass =
-    'w-full rounded-[1.2rem] border border-solid border-[var(--gray2)] bg-[var(--bg-main)] px-[1.6rem] body3 text-[var(--gray2)] placeholder-[var(--gray2)] focus:border-[var(--black)] outline-none';
+    'w-full rounded-[1.2rem] border border-solid border-[var(--gray2)] bg-[var(--bg-main)] px-[1.6rem] body3 placeholder-[var(--gray2)] focus:border-[var(--black)] outline-none';
 
   return (
     <div className={clsx('flex flex-col gap-2', className)}>
@@ -69,6 +69,7 @@ export default function Field(props: InputProps | TextareaProps) {
         <input
           type={props.type ?? 'text'}
           className={clsx(
+            'text-black',
             commonClass,
             heightClass,
             disabled ? 'disabled:text-[#111] disabled:bg-gray2' : ''
