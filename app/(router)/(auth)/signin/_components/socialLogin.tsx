@@ -24,7 +24,7 @@ const socialItems: Record<string, SocialItemsProps> = {
     icon: undefined,
     bgColor: 'var(--gray1)',
     text: '비회원으로 시작하기',
-    redirectUrl: `/`,
+    redirectUrl: `/api/oauth/guest`,
   },
 };
 

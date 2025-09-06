@@ -10,8 +10,8 @@ export const api = async <T extends keyof APIResource>(
   method: APIResource[T]['method'],
   endpoint: APIResource[T]['endpoint'],
   param?: APIResource[T]['req'],
-  headers?: APIHeader,
-  needAuth?: boolean
+  headers?: APIHeader
+  // needAuth?: boolean
 ): Promise<APIResource[T]['res']> => {
   const token = await getCookie('access_token');
 
@@ -19,10 +19,9 @@ export const api = async <T extends keyof APIResource>(
     return await fetch(`${process.env.BACKEND_API}${endpoint}`, {
       method: method,
       headers: {
-        ...(needAuth &&
-          token && {
-            Authorization: `Bearer ${token}`,
-          }),
+        ...(token && {
+          Authorization: `Bearer ${token}`,
+        }),
         ...headers,
       },
       body: param ? JSON.stringify(param) : undefined,
