@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import ShadowBox from '@/components/shadow';
 
 export default function HotChallengeCard({
-  clamp,
+  clamp = 2,
   endSoon,
 }: {
   clamp?: number;

@@ -82,9 +82,9 @@ export default function DateCalendar() {
   };
 
   // 초기화 (이번 달로 이동함)
-  const onClickResetBtn = () => {
-    setToday(dayjs());
-  };
+  // const onClickResetBtn = () => {
+  //   setToday(dayjs());
+  // };
 
   // 연도 선택(변경)
   const onClickChangeYear = (year: number) => {
