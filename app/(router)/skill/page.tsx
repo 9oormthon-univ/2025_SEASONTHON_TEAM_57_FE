@@ -2,9 +2,10 @@
 
 import React from 'react';
 
+import CategoryChips from '@/components/category/categoryChips';
+
 import FilterTab from './_components/FilterTab';
 import PostList, { Post } from './_components/PostList';
-import CategoryChips from '../../../components/category/CategoryChips';
 
 const posts: Post[] = Array.from({ length: 4 }, (_, i) => ({
   id: i + 1,
@@ -26,17 +27,6 @@ export default function SkillSharePage() {
           defaultIndex={0}
           onChange={handleFilterChange}
         />
-
-        <div className="mt-6" />
-        <div className="flex items-center justify-between">
-          <h3 className="h3 text-[var(--black)] pl-[32px]">지금 Hot한 재능</h3>
-          <MoreLink href="/hot" />
-        </div>
-
-        <HotCarousel
-          items={hotCards}
-          className="mt-3"
-        />
       </div>
 
       <div className="flex items-center justify-between mt-[2.0rem] mb-[10px]">
@@ -44,10 +34,7 @@ export default function SkillSharePage() {
       </div>
 
       <div className="mt-4">
-        <CategoryChips
-          boxSize={60}
-          iconPaddingRatio={0.08}
-        />
+        <CategoryChips onSelect={index => console.log('선택된 카테고리:', index)} />
       </div>
 
       <div className="flex items-center justify-between mt-[40px] mb-[12px]">
