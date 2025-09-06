@@ -5,7 +5,7 @@ import Bell from '@/public/icons/bell.svg';
 
 export default function SkillLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="bg-main h-screen">
+    <div className="h-screen bg-main">
       <Header
         left={{
           title: '재능공유',

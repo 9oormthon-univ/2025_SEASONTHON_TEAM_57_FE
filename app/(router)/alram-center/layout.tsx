@@ -5,7 +5,7 @@ import Back from '@/public/icons/left-arrow.svg';
 
 export default function AlramLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="bg-main h-screen">
+    <div className="h-screen bg-main">
       <Header left={{ icon: <Back /> }} />
 
       <section className="flex-1 overflow-y-auto pb-28">
