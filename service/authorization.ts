@@ -12,7 +12,7 @@ export const GetAccessToken = async (param: AccInterlockCode) => {
   try {
     const res = await api<'getAccessToken'>(
       'POST',
-      '/api/v1/auth/kakao/login',
+      '/v1/auth/kakao/login',
       {
         code: param.code,
       },
@@ -59,7 +59,7 @@ export const RegisterUser = async (param: RegisterUserParams) => {
 
     const res = await api<'registerUser'>(
       'POST',
-      '/api/v1/auth/signup',
+      '/v1/auth/signup',
       {
         linkToken: link_token,
         profile: profile,
@@ -97,37 +97,6 @@ export const RegisterUser = async (param: RegisterUserParams) => {
   }
 };
 
-export const RefreshAccessToken = async () => {
-  try {
-    const refreshToken = await getCookie('refresh_token');
-    if (!refreshToken) throw new Error('No refresh token available');
-
-    const res = await api<'refreshAccessToken'>(
-      'POST',
-      '/api/v1/auth/refresh',
-      {
-        refreshToken: refreshToken,
-      },
-      {
-        'User-Agent': 'Mozilla/5.0',
-        'Content-Type': 'application/json',
-      }
-    );
-
-    await setCookie('access_token', res.accessToken, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax',
-      path: '/',
-      maxAge: 60 * 60 * 24,
-    });
-  } catch (error) {
-    const err = error as APIErrorResponse;
-    console.error('RefreshAccessToken Error: ', err);
-    throw error;
-  }
-};
-
 export const RevokeAccessToken = async (): Promise<void> => {
   try {
     const refreshToken = await getCookie('refresh_token');
@@ -135,7 +104,7 @@ export const RevokeAccessToken = async (): Promise<void> => {
 
     await api<'logout'>(
       'POST',
-      '/api/v1/auth/logout',
+      '/v1/auth/logout',
       {
         refreshToken: refreshToken,
       },
@@ -149,7 +118,7 @@ export const RevokeAccessToken = async (): Promise<void> => {
     await deleteCookie('refresh_token');
   } catch (error) {
     const err = error as APIErrorResponse;
-    console.error('RevokeAccessToken Error: ', err);
-    throw error;
+    console.error('RevokeAccessToken Error: ', err.code);
+    throw err;
   }
 };

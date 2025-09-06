@@ -17,7 +17,6 @@ export default function SvgBox({ Icon, size = 24, label, className = '' }: SvgBo
       <Icon
         width={size}
         height={size}
-        viewBox="0 0 24 24"
         preserveAspectRatio="xMidYMid meet"
         className="block w-full h-full"
         aria-label={label}

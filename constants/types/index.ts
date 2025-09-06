@@ -7,6 +7,10 @@ export type TermsState = Record<string, boolean>;
 
 export type Gender = 'male' | 'female';
 
+export type SkillType = 'learn' | 'teach' | 'trade';
+export type ReviewStatus = 'PENDING' | 'APPROVED' | 'REJECTED';
+export type ProgressStatus = 'NOT_STARTED' | 'ONGOING' | 'ENDED';
+
 // FOR API
 
 export interface APIResponse<T> {

@@ -25,18 +25,17 @@ export default async function SignupComplete() {
     const realName = trimmedValue(name);
     const birthDate = trimmedValue(birth);
 
-    console.log('nickname:', nickname, 'email:', realName);
-
     if (!nickname || !realName || !birthDate) {
       redirect('/signup/complete?error=required');
     }
 
     try {
       await RegisterUser({ nickname, realName, birthDate });
-      redirect('/');
     } catch (error) {
       redirect(`/signup/complete?error=${(error as Error).message}`);
     }
+
+    redirect('/');
   }
 
   const memberInfo_cookie = await getCookie('member_info');

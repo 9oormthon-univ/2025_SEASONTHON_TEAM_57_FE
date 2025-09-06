@@ -135,6 +135,9 @@ video {
 @utility bg-secondary {
   background-color: var(--secondary);
 }
+@utility bg-whiteGradient {
+  background: var(--whiteGradient);
+}
 
 @utility text-gray1 {
   color: var(--gray1);
@@ -150,6 +153,9 @@ video {
 }
 @utility text-primary {
   color: var(--primary);
+}
+@utility text-secondary {
+  color: var(--secondary);
 }
 
 @utility h1 {
