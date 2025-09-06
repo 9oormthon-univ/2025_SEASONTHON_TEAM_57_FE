@@ -59,13 +59,13 @@ export default function SkillSharePage() {
       </div>
 
       <div className="mt-[1.2rem] mx-[3.2rem]">
-        {skills.length > 0 &&
-          skills.map((skill, i) => (
-            <PostList
-              key={i}
-              posts={[{ ...skill, content: skill.title, categoryId: skill.categories[0].name }]}
-            />
-          ))}
+        {skills.slice(0, 3).map((skill, i) => (
+          <PostList
+            key={skill.id ?? i}
+            imgIndex={i} // 👉 0,1,2 내려줌
+            posts={[{ ...skill, content: skill.title, categoryId: skill.categories[0].name }]}
+          />
+        ))}
       </div>
 
       <div className="h-6" />

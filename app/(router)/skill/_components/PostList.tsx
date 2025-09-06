@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
@@ -13,12 +14,24 @@ export type Post = {
   categoryId: string;
 };
 
-export default function PostList({ posts, className = '' }: { posts: Post[]; className?: string }) {
+export default function PostList({
+  posts,
+  className = '',
+  imgIndex = 0, // 👈 부모가 준 인덱스
+}: {
+  posts: Post[];
+  className?: string;
+  imgIndex?: number;
+}) {
   const TYPE_MAP: Record<SkillType, string> = {
     learn: '배우기',
     teach: '알려주기',
     trade: '교환',
   };
+
+  // 0→1.png, 1→2.png, 2→3.png
+  const imgSrc = `/image/${imgIndex + 1}.png`;
+
   return (
     <ul className={`divide-y divide-[var(--gray1)] ${className}`}>
       {posts.map(p => (
@@ -28,15 +41,25 @@ export default function PostList({ posts, className = '' }: { posts: Post[]; cla
         >
           <Link
             href={`/skill/${p.id}`}
-            className="grid grid-cols-[56px_1fr] gap-3"
+            className="grid grid-cols-[60px_1fr] gap-3"
           >
-            <div className="h-24 w-24 rounded-[12px] bg-[var(--gray1)]" />
+            <div className="w-[60px] h-[60px] rounded-[12px] overflow-hidden bg-[var(--gray1)]">
+              <Image
+                src={imgSrc}
+                alt={`post-image-${imgIndex + 1}`}
+                width={60}
+                height={60}
+                className="object-cover"
+              />
+            </div>
             <div className="min-w-0">
               <p className="body1 text-[var(--black)] truncate ml-4">
                 [{TYPE_MAP[p.type]}] {p.title}
               </p>
-              <p className="body3 text-[var(--gray4)] mt-1 line-clamp-2 ml-4">{p.content}</p>
-              <p className="body1 text-[var(--black)] pl-[1.2rem] mt-[0.6rem]">{p.price}원</p>
+              <p className="body3 text-[var(--gray4)] mt-1 line-clamp-2 ml-4 mb-[1.6rem]">
+                {p.content}
+              </p>
+              {/* <p className="body1 text-[var(--black)] pl-[1.2rem] mt-[0.6rem]">{p.price}원</p> */}
               <p className="mt-2 text-right text-[var(--gray3)] text-[1.2rem] leading-[150%]">
                 {p.categoryId}
               </p>

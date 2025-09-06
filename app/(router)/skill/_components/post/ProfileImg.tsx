@@ -24,7 +24,7 @@ export default function ProfileImg({ src, name, time }: Props) {
 
       {/* 이름 + 시간 */}
       <div className="flex flex-col ml-[0.8rem]">
-        <span className="body1">{name}</span>
+        <span className="body1">넥스트 고수</span>
         <span className="body3 mt-[0.6rem]">{time}</span>
       </div>
     </div>

@@ -51,25 +51,26 @@ function toKoreanType(t?: string) {
 const SAMPLE: CommentNode[] = [
   {
     id: 'c1',
-    authorName: '홍길동',
-    avatarUrl: '/mypage/sample_profile.png',
-    content: '좋은 글 잘 봤어요!',
-    createdAt: '2025-09-06 12:30',
+    authorName: '진구',
+    avatarUrl: '/mypage/jingu.png',
+    content: '좋은 글 잘 봤어요! 리액트 경험 있고 Next.js 배워보고싶어요!',
+    createdAt: '2025-09-07 07:05',
     replies: [
       {
         id: 'r1',
-        authorName: '임꺽정',
+        authorName: '넥스트 고수',
         avatarUrl: '/mypage/sample_profile.png',
-        content: '저도 동의합니다.',
-        createdAt: '2025-09-06 13:02',
+        content: '넵 신청해주셔서 감사합니다!! 열심히할게요!',
+        createdAt: '2025-09-07 07:06',
       },
     ],
   },
   {
     id: 'c2',
-    authorName: '이몽룡',
-    content: '질문 하나 있어요. API 응답 형식이 어떻게 되나요?',
-    createdAt: '2025-09-06 14:10',
+    authorName: '도라에몽',
+    avatarUrl: '/mypage/dora.png',
+    content: '질문이 있어요! React를 배우지 않고 Next.js를 사용하면 많이 힘든가요?',
+    createdAt: '2025-09-07 07:10',
   },
 ];
 
@@ -105,8 +106,11 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
 
   const when = timeAgoKOR(post.createdAt);
   const typeLabel = toKoreanType(post.type);
-  const gallery =
-    post.images?.map(img => ({ src: img.imageUrl, alt: `image-${img.imageId}` })) ?? [];
+  const gallery = [
+    { imageId: 1, src: '/image/1.png' },
+    { imageId: 2, src: '/image/2.png' },
+    { imageId: 3, src: '/image/3.png' },
+  ];
   const commentCount = typeof post.commentCount === 'number' ? post.commentCount : 0;
 
   return (
