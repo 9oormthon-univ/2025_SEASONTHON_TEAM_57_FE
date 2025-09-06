@@ -11,7 +11,6 @@ type Props = {
 export default function ProfileImg({ src, name, time }: Props) {
   return (
     <div className="flex items-center h-[6.0rem]">
-      {/* 프로필 이미지 */}
       <div className="w-[6.0rem] h-[6.0rem] rounded-full overflow-hidden">
         <Image
           src={src}
@@ -22,7 +21,6 @@ export default function ProfileImg({ src, name, time }: Props) {
         />
       </div>
 
-      {/* 이름 + 시간 */}
       <div className="flex flex-col ml-[0.8rem]">
         <span className="body1">{name}</span>
         <span className="body3 mt-[0.6rem]">{time}</span>

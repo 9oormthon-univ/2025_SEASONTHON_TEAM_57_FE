@@ -23,7 +23,6 @@ const SAMPLE: CommentNode[] = [
   {
     id: 'c2',
     authorName: '이몽룡',
-    // avatarUrl 없음 → 이니셜로 표시
     content: '질문 하나 있어요. API 응답 형식이 어떻게 되나요?',
     createdAt: '2025-09-06 14:10',
   },

@@ -28,14 +28,12 @@ export async function createSkill(formData: FormData) {
   const learnCategoryIds = parseIds(formData.get('learnCategoryIds')?.toString() ?? '[]');
   const teachCategoryIds = parseIds(formData.get('teachCategoryIds')?.toString() ?? '[]');
 
-  // 기본 검증
   if (!['trade', 'learn', 'teach'].includes(type))
     throw new Error('유형(type)이 올바르지 않습니다.');
   if (!title) throw new Error('제목을 입력해 주세요.');
   if (!content) throw new Error('내용을 입력해 주세요.');
   if (price < 0) throw new Error('가격은 0 이상이어야 합니다.');
 
-  // ✅ service로 JSON 호출
   await CreateSkillPost({
     type,
     title,
