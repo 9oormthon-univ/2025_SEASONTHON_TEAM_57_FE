@@ -26,7 +26,7 @@ export default function ChallengeLayout({
           },
         ]}
       />
-      <main className="mx-[3.2rem] mt-[.2rem] mb-[8rem]">{children}</main>
+      <main className="mt-[.2rem] mb-[8rem]">{children}</main>
     </>
   );
 }

@@ -10,20 +10,22 @@ export interface challengeType {
   startDate: string;
   endDate: string;
   createdAt: string;
-  challengeCategories: string;
+  challengeCategories: string[];
+}
+
+export interface postChallengeType {
+  title: string;
+  content: string;
+  image: string;
+  startDate: string;
+  endDate: string;
+  categoryIds: number[];
 }
 
 export interface PostChallenge {
   method: 'POST';
   endpoint: '/challenges';
-  req: {
-    title: string;
-    content: string;
-    image: string;
-    startDate: string;
-    endDate: string;
-    categoryIds: number[];
-  };
+  req: postChallengeType;
   res: undefined;
 }
 

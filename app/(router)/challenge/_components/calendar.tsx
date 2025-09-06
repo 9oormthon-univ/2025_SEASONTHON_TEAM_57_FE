@@ -6,13 +6,17 @@ import { useEffect, useState } from 'react';
 
 import ShadowBox from '@/components/shadow';
 
+import { CertificatingType } from '@/service/interfaces';
+
 import LeftArrow from '@icons/arrow/left.svg';
 import RightArrow from '@icons/arrow/right.svg';
 import CloseIcon from '@icons/x.svg';
 
+import { Props } from '../(main)/challengeMain';
+
 dayjs.locale('en');
 
-export default function DateCalendar() {
+export default function DateCalendar({ action }: Props) {
   // 연도 변환 모달
   const [showYearModal, setShowYearModal] = useState(false);
 
@@ -24,7 +28,7 @@ export default function DateCalendar() {
   const pastYear = currentDate.subtract(200, 'year').year();
 
   // 현재 연도와 200년 전까지의 연도를 배열에 담습니다.
-  const years = [];
+  const years: number[] = [];
   for (let year = currentYear; year >= pastYear; year--) {
     years.push(year);
   }
@@ -34,18 +38,14 @@ export default function DateCalendar() {
 
   // 날짜 상태관리
 
-  interface CalendarData {
-    date: string;
-    totalCont: number;
-    items: Array<{
-      eventId: string;
-      content: string;
-      // department: Tag | 'OTHERS';
-    }>;
-  }
   const [today, setToday] = useState(dayjs());
-  const [selectedDate, setSelectedDate] = useState<[string, number, dayjs.Dayjs] | null>(null);
-  const [calendarData_fetched, setCalendarData] = useState<CalendarData[]>([]);
+  // selectedDate의 초기값 오늘
+  const [selectedDate, setSelectedDate] = useState<[string, number, dayjs.Dayjs]>([
+    dayjs().format('YYYY-MM-DD'),
+    0,
+    dayjs(),
+  ]);
+  const [calendarData_fetched, setCalendarData] = useState<CertificatingType[] | null>(null);
 
   // 해당 달의 전체일수를 구함
   const daysInMonth = today.daysInMonth();
@@ -82,9 +82,9 @@ export default function DateCalendar() {
   };
 
   // 초기화 (이번 달로 이동함)
-  const onClickResetBtn = () => {
-    setToday(dayjs());
-  };
+  // const onClickResetBtn = () => {
+  //   setToday(dayjs());
+  // };
 
   // 연도 선택(변경)
   const onClickChangeYear = (year: number) => {
@@ -108,39 +108,22 @@ export default function DateCalendar() {
     setShowYearModal(false);
   };
 
+  useEffect(() => {
+    const res = action({ year: today.year(), month: today.month() + 1 });
+    res.then(data => {
+      if (data) {
+        setCalendarData(data);
+        console.log('calendar data in calendar', data);
+      }
+    });
+  }, [action, today]);
+
   return (
     <ShadowBox>
       {/* Date Calendar */}
       <div className="z-[200]">
         {/* 달력 모달과 연도 선택 모달이 둘 다 켜진 경우, 구분을 위해 달력 모달에 배경색을 입힌다. */}
         <div className="pb-[16px]">
-          {selectedDate && calendarData_fetched[selectedDate[1]].items.length > 0 && (
-            <div className="absolute w-max text-[10px] top-[60px] left-[50%] translate-x-[-50%] rounded-[10px] backdrop-blur-[2px] bg-[#111111A3] text-white pt-[9px] pb-[13px] px-[13px] z-[200]">
-              <div className="ml-[13px] font-normal">{selectedDate[2].format('MM.DD')}</div>
-              {/* {calendarData_fetched[selectedDate[1]].items.map((item, i) => (
-                <div key={i}>
-                  <div className="flex items-center mt-[2px]">
-                    <div
-                      className={clsx(
-                        'h-[6px] aspect-square rounded-full',
-                        item.department === 'COMPUTER_SCI'
-                          ? 'bg-main'
-                          : item.department === 'EMBEDDED'
-                          ? 'bg-[#87B9BA]'
-                          : item.department === 'INFO_COMM'
-                          ? 'bg-[#FE908A]'
-                          : item.department === 'OTHERS'
-                          ? 'bg-[#FBE08D]'
-                          : 'bg-main'
-                      )}
-                    />
-                    <span className="ml-[7px] leading-[14px]">{item.content}</span>
-                  </div>
-                </div>
-              ))} */}
-            </div>
-          )}
-
           {/* 달력의 헤더 */}
           <header>
             <div className="relative flex justify-between pt-[18px] pb-[15px] border-b border-[#D4D4D4] p-[9px]">
@@ -207,7 +190,7 @@ export default function DateCalendar() {
                 <li
                   key={index}
                   className={`cursor-default w-[14.28%] text-center ${
-                    el === 'SUN' ? 'text-[#FE908A]' : el === 'SAT' ? 'text-active' : 'text-sub'
+                    el === 'SUN' ? 'text-[#FF0000]' : el === 'SAT' ? 'text-active' : 'text-sub'
                   }`}
                 >
                   {el}
@@ -228,48 +211,34 @@ export default function DateCalendar() {
                     <div className="relative flex flex-col items-center">
                       <div
                         id="calendar-day"
-                        // onClick={() => onClickChangeDate(date, index - emptyDates.length + 1)}
+                        onClick={() => onClickChangeDate(date, index - emptyDates.length + 1)}
                         className={clsx(
-                          'cursor-pointer flex justify-center items-center text-[10px] font-bold w-[25px] aspect-square rounded-full',
-                          date.date.day() === 0
-                            ? '!text-[#FE908A]'
-                            : date.date.day() === 6
-                            ? '!text-active'
-                            : 'text-sub',
+                          'cursor-pointer flex justify-center items-center body2 w-[38px] aspect-square rounded-[.8rem]',
+                          date.date.day() === 0 ? '!text-[#FF0000]' : '',
                           date.date.format('YYYY-MM-DD') === dayjs().format('YYYY-MM-DD')
-                            ? 'bg-main !text-white'
-                            : 'bg-sub text-sub hover:bg-gray',
+                            ? '!text-secondary'
+                            : 'hover:bg-gray1',
                           selectedDate &&
                             selectedDate[0] === date.date.format('YYYY-MM-DD') &&
-                            selectedDate[0] !== dayjs().format('YYYY-MM-DD') &&
-                            'border-[2px] border-[#AEAEAE]'
+                            '!text-white bg-secondary'
                         )}
                       >
                         {date.date.format('D')}
                       </div>
                       <div className="flex mt-[5px] h-[6px] gap-[3px]">
-                        {/* {calendarData_fetched &&
-                          calendarData_fetched[index - emptyDates.length + 1] &&
-                          calendarData_fetched[index - emptyDates.length + 1].items.length > 0 &&
-                          calendarData_fetched[index - emptyDates.length + 1].items.map(
-                            (item, i) => (
-                              <div
-                                key={i}
-                                className={clsx(
-                                  'h-[6px] aspect-square rounded-full',
-                                  item.department === 'COMPUTER_SCI'
-                                    ? 'bg-main'
-                                    : item.department === 'EMBEDDED'
-                                    ? 'bg-[#87B9BA]'
-                                    : item.department === 'INFO_COMM'
-                                    ? 'bg-[#FE908A]'
-                                    : item.department === 'OTHERS'
-                                    ? 'bg-[#FBE08D]'
-                                    : 'bg-main'
-                                )}
-                              />
-                            )
-                          )} */}
+                        {calendarData_fetched &&
+                          calendarData_fetched.length > 0 &&
+                          calendarData_fetched.map((item, i) => (
+                            <div
+                              key={i}
+                              className={clsx(
+                                'h-[6px] aspect-square rounded-full',
+                                item.createDate === date.date.format('YYYY-MM-DD')
+                                  ? 'bg-secondary'
+                                  : 'bg-gray-300'
+                              )}
+                            />
+                          ))}
                       </div>
                     </div>
                   )}

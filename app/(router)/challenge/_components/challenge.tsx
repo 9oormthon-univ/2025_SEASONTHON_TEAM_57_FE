@@ -6,7 +6,7 @@ export default function ChallengeCard({ value }: { value: challengeType }) {
   const { challengeCategories, title, content, image } = value;
 
   return (
-    <div className="py-[1.2rem]">
+    <div className="py-[1.2rem] border-b border-[var(--gray2)]">
       <div className="flex gap-[1.2rem] items-center">
         <Image
           src={image}
@@ -20,7 +20,7 @@ export default function ChallengeCard({ value }: { value: challengeType }) {
           <span className="body3 mt-[.6rem] line-clamp-2">{content}</span>
         </div>
       </div>
-      <div className="mt-[.8rem]">{challengeCategories}</div>
+      <div className="mt-[.8rem] text-right text-gray3">{challengeCategories.join(' / ')}</div>
     </div>
   );
 }

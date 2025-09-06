@@ -22,9 +22,6 @@ export async function GET(req: NextRequest) {
     return NextResponse.json(data);
   } catch (error) {
     const err = error as APIErrorResponse;
-    if (err.code === 'A002') {
-      return NextResponse.redirect(new URL('/signup/agree', req.url));
-    }
     return NextResponse.json({ error: `${err.message} [${err.code}]` });
   }
 }
