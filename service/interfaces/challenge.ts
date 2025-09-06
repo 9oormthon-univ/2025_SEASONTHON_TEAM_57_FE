@@ -1,6 +1,6 @@
 import { ProgressStatus, ReviewStatus } from '@/constants/types';
 
-interface challengeType {
+export interface challengeType {
   author: string;
   title: string;
   content: string;
@@ -81,9 +81,29 @@ export interface GetMyChallenges {
 
 export interface GetApprovedChallenges {
   method: 'GET';
-  endpoint: '/challenges/approve-list';
+  endpoint: `/challenges/approve-list?categoryId=${number}`;
   req: {
     categoryId: number;
   };
+  res: challengeType[];
+}
+export interface GetApprovedAllChallenges {
+  method: 'GET';
+  endpoint: '/challenges/approve-list/all';
+  req: undefined;
+  res: challengeType[];
+}
+
+export interface GetPopularChallenges {
+  method: 'GET';
+  endpoint: '/challenges/popular';
+  req: undefined;
+  res: challengeType[];
+}
+
+export interface GetParticipatingChallenges {
+  method: 'GET';
+  endpoint: '/challenges/my-challenge-posts';
+  req: undefined;
   res: challengeType[];
 }
