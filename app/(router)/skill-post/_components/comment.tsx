@@ -38,7 +38,7 @@ export default function Comment() {
         <input
           type="text"
           placeholder="댓글을 입력해주세요."
-          className="w-full h-full text-body3 border border-[var(--gray1)] bg-[var(--gray1)] rounded-[1.6rem] pl-[1.2rem] focus:outline-none text-[1.8rem] text-[var(--black)]"
+          className="w-full h-full body3 border border-[var(--gray1)] bg-[var(--gray1)] rounded-[1.6rem] pl-[1.2rem] focus:outline-none text-[var(--black)]"
         />
       </div>
       <SvgBox

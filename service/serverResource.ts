@@ -23,6 +23,7 @@ import {
   GetChallengeDetail,
   GetApprovedAllChallenges,
   GetParticipatingChallenges,
+  AllSkillCategoryPosts,
 } from './interfaces';
 
 export interface APIResource {
@@ -50,4 +51,5 @@ export interface APIResource {
   getChallengeDetail: GetChallengeDetail;
   getApprovedAllChallenges: GetApprovedAllChallenges;
   getParticipatingChallenges: GetParticipatingChallenges;
+  allSkillCategoryPosts: AllSkillCategoryPosts;
 }

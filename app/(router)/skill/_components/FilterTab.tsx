@@ -19,7 +19,7 @@ export default function FilterTab({ defaultIndex = 0, onChange, className = '' }
   };
 
   return (
-    <div className={`w-full px-[3.2rem] ${className}`}>
+    <div className={`w-full  ${className}`}>
       <div className="mx-auto w-full max-w-[500px]">
         <div
           className="flex w-full gap-2 p-2 rounded-2xl overflow-hidden"

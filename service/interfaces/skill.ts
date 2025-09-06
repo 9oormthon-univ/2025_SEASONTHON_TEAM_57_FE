@@ -60,6 +60,7 @@ export interface SkillCreate {
     content: string;
     learnCategoryIds: number[];
     teachCategoryIds: number[];
+    price: number;
   };
   res: {
     id: number;
@@ -79,15 +80,23 @@ export interface SkillCreate {
   };
 }
 
-interface SkillPostData {
+interface SkillCategory {
+  id: number;
+  name: string;
+  type: SkillType;
+}
+
+export interface SkillPostData {
   id: number;
   authorName: string;
   type: SkillType;
+  price: number;
   title: string;
   createdAt: string;
   status: 'open' | 'close';
   commentCount: number;
   categoryNames: string[];
+  categories: SkillCategory[];
 }
 
 export interface SkillRecommend {
@@ -117,5 +126,12 @@ export interface SkillCategoryPosts {
   req: {
     categoryId: number;
   };
+  res: SkillPostData[];
+}
+
+export interface AllSkillCategoryPosts {
+  method: 'GET';
+  endpoint: '/talent-posts/all';
+  req: undefined;
   res: SkillPostData[];
 }
