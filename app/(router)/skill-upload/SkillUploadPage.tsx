@@ -30,7 +30,7 @@ function SvgBox({
       <Icon
         viewBox={vb}
         preserveAspectRatio="xMidYMid meet"
-        className="w-full h-full block"
+        className="block w-full h-full"
       />
     </span>
   );
@@ -92,7 +92,7 @@ export default function SkillUploadPage({ action }: Props) {
     );
 
   return (
-    <main className="bg-main min-h-screen">
+    <main className="min-h-screen bg-main">
       <form
         id="skill-form"
         action={action}
@@ -147,6 +147,7 @@ export default function SkillUploadPage({ action }: Props) {
         <Field
           label="가격"
           placeholder="가격 입력"
+          name="price"
           value={price}
           onChange={setPrice}
           size="lg"
@@ -156,6 +157,7 @@ export default function SkillUploadPage({ action }: Props) {
         <Field
           as="textarea"
           label="내용"
+          name="content"
           placeholder="추가하고 싶은 내용 입력"
           value={content}
           onChange={setContent}
