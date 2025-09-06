@@ -7,7 +7,7 @@ const SAMPLE: CommentNode[] = [
   {
     id: 'c1',
     authorName: '홍길동',
-    avatarUrl: '/mypage/sample_profile.png', // public/mypage/sample_profile.png
+    avatarUrl: '/mypage/sample_profile.png',
     content: '좋은 글 잘 봤어요!',
     createdAt: '2025-09-06 12:30',
     replies: [

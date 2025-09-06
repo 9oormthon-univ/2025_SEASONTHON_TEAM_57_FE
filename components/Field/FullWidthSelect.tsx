@@ -85,7 +85,7 @@ export default function FullWidthSelect({
       className={clsx('flex flex-col gap-2', className)}
       ref={ref}
     >
-      {label && <span className="body3 text-[var(--gray4)]">{label}</span>}
+      {label && <span className="body3">{label}</span>}
 
       <div
         role="button"

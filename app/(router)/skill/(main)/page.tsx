@@ -5,8 +5,8 @@ import { useState, useEffect } from 'react';
 import CategoryChips from '@/components/category/categoryChips';
 import { SkillPostData } from '@/service/interfaces/skill';
 
-import FilterTab from './_components/FilterTab';
-import PostList from './_components/PostList';
+import FilterTab from '../_components/FilterTab';
+import PostList from '../_components/PostList';
 
 export default function SkillSharePage() {
   const [Category, setCategory] = useState<number>(0);
@@ -35,7 +35,7 @@ export default function SkillSharePage() {
 
   return (
     <>
-      <div className="mt-4">
+      <div className="mt-4 mx-[3.2rem]">
         <FilterTab
           defaultIndex={0}
           onChange={handleFilterChange}
@@ -43,7 +43,7 @@ export default function SkillSharePage() {
       </div>
 
       <div className="flex items-center justify-between mt-[2.0rem] mb-[10px]">
-        <h3 className="h3 text-[var(--black)]">카테고리</h3>
+        <h3 className="h3 text-[var(--black)] mx-[3.2rem]">카테고리</h3>
       </div>
 
       <div className="mt-4">
@@ -55,17 +55,17 @@ export default function SkillSharePage() {
       </div>
 
       <div className="flex items-center justify-between mt-[40px] mb-[12px]">
-        <h3 className="h3 text-[var(--black)]">온심이 님께 추천드리는 재능공유</h3>
+        <h3 className="h3 text-[var(--black)] mx-[3.2rem]">온심이 님께 추천드리는 재능공유</h3>
       </div>
 
-      <div className="mt-[1.2rem]">
-        {skills.length > 0 &&
-          skills.map((skill, i) => (
-            <PostList
-              key={i}
-              posts={[{ ...skill, content: skill.title, categoryId: skill.categories[0].name }]}
-            />
-          ))}
+      <div className="mt-[1.2rem] mx-[3.2rem]">
+        {skills.slice(0, 3).map((skill, i) => (
+          <PostList
+            key={skill.id ?? i}
+            imgIndex={i} // 👉 0,1,2 내려줌
+            posts={[{ ...skill, content: skill.title, categoryId: skill.categories[0].name }]}
+          />
+        ))}
       </div>
 
       <div className="h-6" />
