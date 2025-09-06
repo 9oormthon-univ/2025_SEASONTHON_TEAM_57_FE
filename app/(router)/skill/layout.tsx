@@ -18,7 +18,7 @@ export default function SkillLayout({ children }: { children: React.ReactNode })
         ]}
       />
 
-      <section className="flex-1 overflow-y-auto pb-28">{children}</section>
+      <section className="flex-1 overflow-y-auto pb-28 mx-[3.2rem]">{children}</section>
     </div>
   );
 }

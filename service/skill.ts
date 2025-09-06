@@ -71,6 +71,7 @@ export const CreateSkillPost = async (param: SkillCreate['req']) => {
         content: param.content,
         learnCategoryIds: param.learnCategoryIds,
         teachCategoryIds: param.teachCategoryIds,
+        price: param.price,
       },
       {
         'User-Agent': 'Mozilla/5.0',
@@ -130,6 +131,18 @@ export const GETSkillCategoryPosts = async (categoryId: number) => {
         'Content-Type': 'application/json',
       }
     );
+    return res;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const GETAllSkillCategoryPosts = async () => {
+  try {
+    const res = await api<'allSkillCategoryPosts'>('GET', '/talent-posts/all', undefined, {
+      'User-Agent': 'Mozilla/5.0',
+      'Content-Type': 'application/json',
+    });
     return res;
   } catch (error) {
     throw error;

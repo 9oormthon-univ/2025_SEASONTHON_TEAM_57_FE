@@ -53,9 +53,15 @@ export default function FieldWithEndSelect({
       : 'h-[52px]';
 
   return (
-    <div className={clsx('flex flex-col gap-2', className)} ref={boxRef}>
+    <div
+      className={clsx('flex flex-col gap-2', className)}
+      ref={boxRef}
+    >
       {label && (
-        <label htmlFor={id} className="body3 text-[var(--gray4)]">
+        <label
+          htmlFor={id}
+          className="body3 text-[var(--gray4)]"
+        >
           {label}
         </label>
       )}
@@ -68,7 +74,7 @@ export default function FieldWithEndSelect({
       >
         <input
           id={id}
-          className="flex-1 h-full bg-transparent px-[1.6rem] body3 text-[var(--gray2)] placeholder-[var(--gray2)] focus:outline-none"
+          className="flex-1 h-full bg-transparent px-[1.6rem] body3 text-black placeholder-[var(--gray2)] focus:outline-none"
           placeholder={placeholder}
           value={value}
           onChange={e => onChange?.(e.target.value)}
@@ -89,7 +95,12 @@ export default function FieldWithEndSelect({
             viewBox="0 0 24 24"
             className={clsx('transition-transform', open && 'rotate-180')}
           >
-            <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" strokeWidth="2" />
+            <path
+              d="M6 9l6 6 6-6"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            />
           </svg>
         </button>
 
