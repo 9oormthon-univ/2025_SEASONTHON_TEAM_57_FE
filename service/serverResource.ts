@@ -23,6 +23,11 @@ import {
   GetChallengeDetail,
   GetApprovedAllChallenges,
   GetParticipatingChallenges,
+  GetCertificating,
+  GetMemberCertificating,
+  GetMyCertificatingByChallenge,
+  GetMyCertificatingByDate,
+  GetParticipatingMember,
 } from './interfaces';
 
 export interface APIResource {
@@ -50,4 +55,9 @@ export interface APIResource {
   getChallengeDetail: GetChallengeDetail;
   getApprovedAllChallenges: GetApprovedAllChallenges;
   getParticipatingChallenges: GetParticipatingChallenges;
+  getCertificating: GetCertificating;
+  getMemberCertificating: GetMemberCertificating;
+  getMyCertificatingByChallenge: GetMyCertificatingByChallenge;
+  getMyCertificatingByDate: GetMyCertificatingByDate;
+  getParticipatingMember: GetParticipatingMember;
 }
